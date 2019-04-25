@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/plain_background.png" type="Texture" id=1]
+[ext_resource path="res://scenes/title/title.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
+
+[node name="title" type="TextureRect"]
+self_modulate = Color( 0.347394, 0.160126, 0.621094, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TitleLbl" type="Label" parent="."]
+margin_left = 82.0
+margin_top = 61.0
+margin_right = 930.0
+margin_bottom = 247.0
+custom_fonts/font = ExtResource( 3 )
+text = "Game Title"
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -250.0
+rect_min_size = Vector2( 300, 250 )
+
+[node name="newGameBtn" parent="VBoxContainer" instance=ExtResource( 4 )]
+margin_right = 300.0
+margin_bottom = 64.0
+text = "New Game"
+sceneToLoad = "res://scenes/howToPlay/howToPlay.tscn"
+fadeSound = true
+
+[node name="creditsBtn" parent="VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 68.0
+margin_right = 300.0
+margin_bottom = 132.0
+text = "Credits"
+sceneToLoad = "res://scenes/credits/credits.tscn"
+
+[node name="exitBtn" parent="VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 136.0
+margin_right = 300.0
+margin_bottom = 200.0
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/exitBtn" to="." method="_on_exitBtn_pressed"]

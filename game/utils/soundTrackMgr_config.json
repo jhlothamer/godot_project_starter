@@ -1,0 +1,9 @@
+{
+	"title": {
+		"start_up" : "true",
+		"resource_path": "res://assets/music/title.ogg"
+	},
+	"howToPlay": {
+		"resource_path": "res://assets/music/howToPlay.ogg"
+	}
+}

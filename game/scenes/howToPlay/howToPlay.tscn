@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/images/plain_background.png" type="Texture" id=1]
+[ext_resource path="res://scenes/howToPlay/howToPlay.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/fileContentDisplay/fileContentDisplay.tscn" type="PackedScene" id=5]
+
+[node name="howToPlay" type="TextureRect"]
+self_modulate = Color( 0.578482, 0.195068, 0.734375, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+script = ExtResource( 2 )
+
+[node name="howToPlayLbl" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 256.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 3 )
+text = "How To Play"
+
+[node name="backBtn" parent="." instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -86.0
+margin_right = 175.0
+margin_bottom = 0.0
+text = "Back"
+sceneToLoad = "res://scenes/title/title.tscn"
+fadeSound = true
+
+[node name="playBtn" parent="." instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -151.0
+margin_top = -89.0
+margin_right = 0.0
+margin_bottom = 0.0
+text = "Play"
+sceneToLoad = "res://scenes/title/title.tscn"
+fadeSound = true
+
+[node name="fileContentDisplay" parent="." instance=ExtResource( 5 )]
+margin_left = 20.0
+margin_top = 113.0
+margin_right = -20.0
+margin_bottom = -90.0
+filePath = "res://scenes/howToPlay/howToPlay.txt"
+
