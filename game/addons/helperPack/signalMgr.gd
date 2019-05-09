@@ -3,28 +3,6 @@ extends Node
 var subscribers = {}
 var publishers = {}
 
-var currentScene
-
-func _ready():
-	var tree = get_tree()
-	currentScene = tree.current_scene
-	tree.connect("node_removed", self, "node_removed")
-
-func node_removed(n):
-	if n != currentScene:
-		return
-	#clear()
-	call_deferred("reGetCurrentScene")
-
-func reGetCurrentScene():
-	currentScene = get_tree().current_scene
-
-#func _enter_tree():
-#	clear()
-
-#func _exit_tree():
-#	clear()
-
 class Subscriber:
 	var subscriber = null
 	var signalName = ""
@@ -61,8 +39,8 @@ func registerSubscriber(subscriber, signalName, method, binds = Array(), flags=0
 
 func watchSubExitTree(subscriber):
 	
-	if !subscriber.is_connected("tree_exited", self, "subscriberExitTree"):
-		subscriber.connect("tree_exited", self, "subscriberExitTree", [subscriber])
+	if !subscriber.is_connected("tree_exiting", self, "subscriberExitTree"):
+		subscriber.connect("tree_exiting", self, "subscriberExitTree", [subscriber])
 
 func registerPublisher(publisher, signalName):
 	watchPubExitTree(publisher)
@@ -81,8 +59,6 @@ func deRegisterPublisher(publisher):
 	if !publishers.has(publisher.get_instance_id()):
 		print("publisher dereg - but is not in list!!")
 		return
-	var pub = publishers[publisher.get_instance_id()]
-	print("dereg publisher: " + str(pub[0].signalName))
 	publishers.erase(publisher.get_instance_id())
 
 func deRegisterSubscriber(subscriber):
@@ -91,14 +67,13 @@ func deRegisterSubscriber(subscriber):
 	subscribers.erase(subscriber.get_instance_id())
 
 func watchPubExitTree(publisher):
-	if !publisher.has_user_signal("exit_tree"):
-		return
-	if !publisher.is_connected("exit_tree", self, "publisherExitTree"):
-		publisher.connect("exit_tree", self, "publisherExitTree", [publisher])
+	if !publisher.is_connected("tree_exiting", self, "publisherExitTree"):
+		publisher.connect("tree_exiting", self, "publisherExitTree", [publisher])
 
 func connectPubSub(pub, sub):
-	pub.publisher.connect(pub.signalName, sub.subscriber, sub.method, sub.binds)#, sub.binds, sub.flags)
-
+	if !pub.publisher.is_connected(pub.signalName, sub.subscriber, sub.method):
+		pub.publisher.connect(pub.signalName, sub.subscriber, sub.method, sub.binds)#, sub.binds, sub.flags)
+		
 func publisherExitTree(publisher):
 	deRegisterPublisher(publisher)
 	
