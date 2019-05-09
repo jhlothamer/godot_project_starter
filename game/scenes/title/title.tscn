@@ -56,5 +56,4 @@ margin_top = 136.0
 margin_right = 300.0
 margin_bottom = 200.0
 text = "Exit"
-
 [connection signal="pressed" from="VBoxContainer/exitBtn" to="." method="_on_exitBtn_pressed"]
