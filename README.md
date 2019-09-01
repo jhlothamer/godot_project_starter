@@ -67,7 +67,7 @@ Here's an example component with a signal it want's to pubish.
 signal my_signal()
 
 func _ready():
-	signalMgr.registerPublisher(self, "my_signal")
+	SignalMgr.register_publisher(self, "my_signal")
 ```
 
 And here's a subscriber registering to be connected to the publisher for that signal.
@@ -75,7 +75,7 @@ And here's a subscriber registering to be connected to the publisher for that si
 ```
 #Bar.gd
 func _ready():
-	signalMgr.registerSubscriber(self, "my_signal", "on_my_signal")
+	SignalMgr.register_subscriber(self, "my_signal", "on_my_signal")
 
 func on_my_signal():
 	print("my_signal sent")

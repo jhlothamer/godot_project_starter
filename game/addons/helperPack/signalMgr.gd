@@ -1,82 +1,79 @@
 extends Node
 
+class Subscriber:
+	var subscriber
+	var signalName : String
+	var method : String
+	var binds
+	func _init(subscriber, signalName, method, binds):
+		self.subscriber = subscriber
+		self.signalName = signalName
+		self.method = method
+		self.binds = binds
+	func connect_publisher(publisher):
+		if !publisher.is_connected(signalName, subscriber, method):
+			publisher.connect(signalName, subscriber, method, binds)
+
+class Publisher:
+	var publisher
+	var signalName : String
+	func _init(publisher, signalName):
+		self.publisher = publisher
+		self.signalName = signalName
+	func connect_subscribers(subscribers):
+		for subscriber in subscribers:
+			subscriber.connect_publisher(publisher)
+	func connect_subscriber(subscriber):
+		subscriber.connect_publisher(publisher)
+
 var subscribers = {}
 var publishers = {}
 
-class Subscriber:
-	var subscriber = null
-	var signalName = ""
-	var method = ""
-	var binds = null
-	var flags = 0
-	func _init(sub, sig, m, b, f):
-		subscriber = sub
-		signalName = sig
-		method = m
-		binds = b
-		flags = f
-	func getSignalName():
-		return signalName
-
-class Publisher:
-	var publisher = null
-	var signalName = ""
-	func _init(pub, sig):
-		publisher = pub
-		signalName = sig
-
-func registerSubscriber(subscriber, signalName, method, binds = Array(), flags=0):
-	watchSubExitTree(subscriber)
-	var sub = Subscriber.new(subscriber, signalName, method, binds, flags)
-	var instanceId = subscriber.get_instance_id()
-	if !subscribers.has(instanceId):
-		subscribers[instanceId] = []
-	subscribers[instanceId].append(sub)
-	for pubArray in publishers.values():
-		for pub in pubArray:
+func register_subscriber(subscriber, signalName, method, binds=Array()):
+	var sub = Subscriber.new(subscriber, signalName, method, binds)
+	var instance_id = subscriber.get_instance_id()
+	if !subscribers.has(instance_id):
+		subscribers[instance_id] = []
+		watch_tree_exited(subscriber)
+	subscribers[instance_id].append(sub)
+	for pubs in publishers.values():
+		for pub in pubs:
 			if pub.signalName == sub.signalName:
-				connectPubSub(pub, sub)
+				pub.connect_subscriber(sub)
 
-func watchSubExitTree(subscriber):
-	
-	if !subscriber.is_connected("tree_exiting", self, "subscriberExitTree"):
-		subscriber.connect("tree_exiting", self, "subscriberExitTree", [subscriber])
-
-func registerPublisher(publisher, signalName):
-	watchPubExitTree(publisher)
+func register_publisher(publisher, signalName):
 	var pub = Publisher.new(publisher, signalName)
-	var instanceId = publisher.get_instance_id()
-	if !publishers.has(instanceId):
-		publishers[instanceId] = []
-	publishers[instanceId].append(pub)
-	for subArray in subscribers.values():
-		for sub in subArray:
-			if pub.signalName == sub.signalName:
-				connectPubSub(pub, sub)
+	var instance_id = publisher.get_instance_id()
+	if !publishers.has(instance_id):
+		publishers[instance_id] = []
+		watch_tree_exited(publisher)
+	publishers[instance_id].append(pub)
+	for subs in subscribers.values():
+		for sub in subs:
+			if sub.signalName == pub.signalName:
+				pub.connect_subscriber(sub)
 
+func unregister_subscriber(subscriber):
+	var instance_id = subscriber.get_instance_id()
+	subscribers.erase(instance_id)
 
-func deRegisterPublisher(publisher):
-	if !publishers.has(publisher.get_instance_id()):
-		print("publisher dereg - but is not in list!!")
-		return
-	publishers.erase(publisher.get_instance_id())
+func unregister_publisher(publisher):
+	var instance_id = publisher.get_instance_id()
+	publishers.erase(instance_id)
 
-func deRegisterSubscriber(subscriber):
-	if !subscribers.has(subscriber.get_instance_id()):
-		print("subscriber dereg - but is not in list!!")
-	subscribers.erase(subscriber.get_instance_id())
+func unregister(publisherOrSubscriber):
+	unregister_publisher(publisherOrSubscriber)
+	unregister_subscriber(publisherOrSubscriber)
 
-func watchPubExitTree(publisher):
-	if !publisher.is_connected("tree_exiting", self, "publisherExitTree"):
-		publisher.connect("tree_exiting", self, "publisherExitTree", [publisher])
+func clear():
+	subscribers = {}
+	publishers = {}
 
-func connectPubSub(pub, sub):
-	if !pub.publisher.is_connected(pub.signalName, sub.subscriber, sub.method):
-		pub.publisher.connect(pub.signalName, sub.subscriber, sub.method, sub.binds)#, sub.binds, sub.flags)
-		
-func publisherExitTree(publisher):
-	deRegisterPublisher(publisher)
-	
-func subscriberExitTree(subscriber):
-	deRegisterSubscriber(subscriber)
+func watch_tree_exited(publisherSubscriber):
+	if !publisherSubscriber.is_connected("tree_exited", self, "on_tree_exited"):
+		publisherSubscriber.connect("tree_exited", self, "on_tree_exited", [publisherSubscriber])
+
+func on_tree_exited(publisherSubscriber):
+	unregister(publisherSubscriber)
+
 
