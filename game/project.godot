@@ -22,7 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 globals="*res://addons/helperPack/globals.gd"
-signalMgr="*res://addons/helperPack/signalMgr.gd"
+SignalMgr="*res://addons/helperPack/SignalMgr.gd"
 transitionMgr="*res://utils/transitionMgr.tscn"
 soundTrackMgr="*res://utils/soundTrackMgr.tscn"
 
