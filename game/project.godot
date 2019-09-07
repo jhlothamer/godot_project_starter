@@ -30,6 +30,13 @@ soundTrackMgr="*res://utils/soundTrackMgr.tscn"
 
 monitor=false
 
+[input]
+
+screen_shot={
+"deadzone": 0.5,
+"events": [  ]
+}
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

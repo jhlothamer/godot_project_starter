@@ -82,3 +82,13 @@ func on_my_signal():
 ```
 
 Now the publisher just emits the signal as usual with emit_signal.
+### Screenshot Manager
+Screenshots are required even for game jams these days, and they're better if they are animated!  To create animated gifs, just add the Screenshot Manager to your scene, add keys/button bindings to the "screen_shot" action, and scoop the the screen shots from the user data folder.  Then you can upload them to to a site like ezgif.com to create the gif file.  Here are the options to the ScreenShot Manager.
+
+- Screenshot Max - the maximum number of screenshots taken at a time.
+- Resize Factor - Use this to shrink (or enlarge) the images saved.
+- Enabled - flag to enable Screenshot Manager.
+- Screenshot Action Name - defaulted to "screen_shot", but you can use a different action name if you want.
+
+Since you'll be copying the game, you can modify the defaults and autoload the Screenshot Manager scene in your project so you can collect screenshots in any scene in your game.  Just be sure to disable it when you release your game, unless screenshotting is a feature you want players to use.
+
