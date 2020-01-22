@@ -1,4 +1,6 @@
 extends TextureRect
 
 func _ready():
-	self.self_modulate = globals.get("menusBackgroundColor")
+	var background_color = globals.get("menusBackgroundColor")
+	if background_color != null:
+		self.self_modulate = background_color
