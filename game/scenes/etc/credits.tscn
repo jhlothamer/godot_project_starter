@@ -1,18 +1,21 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/plain_background.png" type="Texture" id=1]
-[ext_resource path="res://scenes/credits/credits.gd" type="Script" id=2]
+[ext_resource path="res://scenes/etc/credits.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/components/fileContentDisplay/fileContentDisplay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/file_content_display/file_content_display.tscn" type="PackedScene" id=5]
 
 [node name="credits" type="TextureRect"]
-self_modulate = Color( 0.578482, 0.195068, 0.734375, 1 )
+self_modulate = Color( 0.34902, 0.160784, 0.619608, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CreditsLbl" type="Label" parent="."]
 margin_left = 20.0
@@ -32,12 +35,11 @@ margin_top = -88.0
 margin_right = 0.0
 margin_bottom = 0.0
 text = "Back"
-sceneToLoad = "res://scenes/title/title.tscn"
+scene_to_load = "res://scenes/etc/title.tscn"
 
 [node name="fileContentDisplay" parent="." instance=ExtResource( 5 )]
 margin_left = 20.0
 margin_top = 113.0
 margin_right = -20.0
 margin_bottom = -90.0
-filePath = "res://scenes/credits/credits.txt"
-
+file_path = "res://assets/data/credits.txt"

@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/plain_background.png" type="Texture" id=1]
-[ext_resource path="res://scenes/title/title.gd" type="Script" id=2]
+[ext_resource path="res://scenes/etc/title.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scenes/button/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=4]
 
 [node name="title" type="TextureRect"]
-self_modulate = Color( 0.347394, 0.160126, 0.621094, 1 )
+self_modulate = Color( 0.34902, 0.160784, 0.619608, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
@@ -36,20 +36,22 @@ anchor_bottom = 1.0
 margin_left = -300.0
 margin_top = -250.0
 rect_min_size = Vector2( 300, 250 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="newGameBtn" parent="VBoxContainer" instance=ExtResource( 4 )]
 margin_right = 300.0
 margin_bottom = 64.0
 text = "New Game"
-sceneToLoad = "res://scenes/howToPlay/howToPlay.tscn"
-fadeSound = true
+scene_to_load = "res://scenes/etc/how_to_play.tscn"
 
 [node name="creditsBtn" parent="VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 68.0
 margin_right = 300.0
 margin_bottom = 132.0
 text = "Credits"
-sceneToLoad = "res://scenes/credits/credits.tscn"
+scene_to_load = "res://scenes/etc/credits.tscn"
 
 [node name="exitBtn" parent="VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 136.0

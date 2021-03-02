@@ -1,5 +1,0 @@
-fonts:
-https://fontlibrary.org/en/font/jellee-typeface
-by Alfredo Marco Pradil
-License: OFL (SIL Open Font License)
-

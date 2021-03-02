@@ -8,23 +8,29 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Button",
+"class": "TransitionButton",
+"language": "GDScript",
+"path": "res://scenes/components/transition_button/transition_button.gd"
+} ]
 _global_script_class_icons={
-
+"TransitionButton": ""
 }
 
 [application]
 
 config/name="Godot Project Starter"
-run/main_scene="res://scenes/title/title.tscn"
+run/main_scene="res://scenes/etc/title.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-globals="*res://addons/helperPack/globals.gd"
-SignalMgr="*res://addons/helperPack/SignalMgr.gd"
-transitionMgr="*res://utils/transitionMgr.tscn"
-soundTrackMgr="*res://utils/soundTrackMgr.tscn"
+TransitionMgr="*res://utils/transition_mgr.tscn"
+
+[debug]
+
+gdscript/warnings/unused_class_variable=true
 
 [global]
 

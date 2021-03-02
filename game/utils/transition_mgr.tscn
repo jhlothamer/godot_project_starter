@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://utils/transitionMgr.gd" type="Script" id=1]
+[ext_resource path="res://utils/transition_mgr.gd" type="Script" id=1]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fadeIn"
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:forAnimDb")
+tracks/1/path = NodePath(".:_for_anim_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:forAnimDb")
+tracks/1/path = NodePath(".:_for_anim_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -55,7 +55,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="transitionMgr" type="CanvasLayer"]
+[node name="TransitionMgr" type="CanvasLayer"]
 pause_mode = 2
 layer = 3
 script = ExtResource( 1 )
@@ -67,5 +67,4 @@ polygon = PoolVector2Array( -2000, -2000, -2000, 2000, 2000, 2000, 2000, -2000 )
 [node name="fadeAnimation" type="AnimationPlayer" parent="."]
 anims/fadeIn = SubResource( 1 )
 anims/fadeOut = SubResource( 2 )
-
 [connection signal="animation_finished" from="fadeAnimation" to="." method="_on_fadeAnimation_animation_finished"]

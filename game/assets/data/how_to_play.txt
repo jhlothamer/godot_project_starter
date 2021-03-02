@@ -1,0 +1,1 @@
+update res://assets/data/how_to_play.txt
