@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/images/white_square_64x64.png" type="Texture" id=2]
+[ext_resource path="res://scenes/etc/cover_images_generator.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=4]
+
+[node name="CoverImagesGenerator" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cover" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 630, 500 )
+
+[node name="TextureRect" type="TextureRect" parent="Cover"]
+self_modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Cover/TextureRect"]
+margin_left = 56.6964
+margin_top = 41.5774
+margin_right = 461.696
+margin_bottom = 218.577
+custom_fonts/font = ExtResource( 4 )
+text = "Game Title 
+Here"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 689.177
+margin_top = 30.2382
+margin_right = 990.177
+margin_bottom = 521.238
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 301.0
+margin_bottom = 389.0
+custom_fonts/font = ExtResource( 1 )
+text = "This scene takes screenshots of the area of the Cover control.  You can add anything to it and animate as desired to create the images to become an animated GIF.  The size ofthe Cover control determines the size of the images.  The recommended size of cover images/GIFs for Itch.io is 630x500.
+
+Warning!  Many image files can be generated quickly!"
+autowrap = true
+
+[node name="SingleScreenShotBtn" type="Button" parent="VBoxContainer"]
+margin_top = 409.0
+margin_right = 301.0
+margin_bottom = 440.0
+custom_fonts/font = ExtResource( 1 )
+text = "Take Single ScreenShot"
+
+[node name="StartStopScreenShotsBtn" type="Button" parent="VBoxContainer"]
+margin_top = 460.0
+margin_right = 301.0
+margin_bottom = 491.0
+custom_fonts/font = ExtResource( 1 )
+text = "Start Capturing Screen Shots"
+[connection signal="pressed" from="VBoxContainer/SingleScreenShotBtn" to="." method="_on_SingleScreenShotBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartStopScreenShotsBtn" to="." method="_on_StartStopScreenShotsBtn_pressed"]

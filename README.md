@@ -54,5 +54,8 @@ Screenshots are required even for game jams these days, and they're better if th
 
 Since you'll be copying the game, you can modify the defaults and auto load the Screenshot Manager scene in your project so you can collect screenshots in any scene in your game. Just be sure to disable it when you release your game, unless taking screen shots is a feature you want players to use.
 
+### Cover Image Generator Scene
+Creating a cover image for sites like itch.io is easy to do with game assets added to this non-game scene.  Just add the assets, labels and animations and hook up the start of any animations with the start/stop button.  This scene will capture screen shots that are cropped to the size of the "Cover" control node in the scene.
+
 ## Where Did the SoundTrackMgr and SignalMgr Components go?
 If you used the project starter in the past you may have used the SoundTrackMgr and SignalMgr components. These are no longer included in the project starter but instead can be found Godot Helper Pack which is an addon pack containing many useful components to make developing in GDScript easier. You can download the helper pack [here](https://github.com/jhlothamer/godot_helper_pack).

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/images/plain_background.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/white_square_64x64.png" type="Texture" id=1]
 [ext_resource path="res://scenes/etc/how_to_play.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=4]
@@ -11,7 +11,7 @@ self_modulate = Color( 0.34902, 0.160784, 0.619608, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
-expand = true
+stretch_mode = 2
 script = ExtResource( 2 )
 
 [node name="howToPlayLbl" type="Label" parent="."]
