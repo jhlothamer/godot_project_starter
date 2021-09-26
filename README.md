@@ -36,13 +36,15 @@ The How to Play scene load's it's text from the how_to_play.txt file. Just updat
 The buttons have a custom property called "Scene To Load". Just set this to the resource path of the scene you want to transition to when the button is clicked.
 
 ### Button Transition Speed and Sound Fade Out/In
-The buttons use the transition manager, which allows for a fade out/in affect when switching scenes. You can set the transition speed (in seconds) and whether the audio fades out/in.
+The buttons use the transition manager, which allows for a fade out/in affect when switching scenes. You can set the transition speed (in seconds) and whether the audio fades out/in. Note that a speed of zero or less will cause the default speed to be used.  That speed is found in the Project Settings -> Globals -> Transition Mgr Default Speed.
 
 ## Other Goodies
 ### Transition Manager
 The transition manager is a singleton that manages the transition between scenes. It simply fades the screen to black, switches scenes and then fades back in. It can also fade out the main audio bus's so the difference in background music isn't as jarring.
 
 The Transition manager, called TransitionMgr, has only one public function called transition_to. It accepts a scene path, transition speed (in seconds) and a flag indicating if the main audio bus should be faded out and in as well.
+
+A speed of transition no longer needs to be passed into the transition_to function.  When speed isn't provided to the function, a new project setting (Project Settings -> Globals -> Transition Mgr Default Speed) is used.  This allows you to set the speed for the while project in one place and override it for special cases.
 
 ### Screen Shot Manager
 Screenshots are required even for game jams these days, and they're better if they are animated! To create animated GIFs, just add the Screenshot Manager to your scene, add keys/button bindings to the "screen_shot" action, and scoop the the screen shots from the user data folder. Then you can upload them to to a site like ezgif.com to create the GIF file. Here are the options to the Screen Shot Manager.

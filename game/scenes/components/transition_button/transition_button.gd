@@ -2,7 +2,7 @@ class_name TransitionButton
 extends Button
 
 export (String, FILE, "*.tscn,*.scn,*.res") var scene_to_load := ""
-export (float) var transition_speed_seconds := .5
+export (float) var transition_speed_seconds := -1.0
 export (bool) var fade_sound := false
 
 func _on_Button_pressed():

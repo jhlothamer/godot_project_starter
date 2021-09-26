@@ -35,6 +35,7 @@ gdscript/warnings/unused_class_variable=true
 [global]
 
 monitor=false
+transition_mgr_default_speed=0.5
 
 [input]
 
