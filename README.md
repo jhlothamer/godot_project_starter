@@ -29,7 +29,7 @@ The Title scene uses the configured application name for the title. Just change 
 The Credits scene loads it's text from the credits.txt file. Just update this file to give credit for any asset or component you need to. It's ALWAYS a good idea to list credit for any asset you don't own.
 
 ### How to Play Text
-the How to Play scene load's it's text from the how_to_play.txt file. Just update this file to provide instructions about your game. Note: The How to Place scene is shown before every game session by default.
+The How to Play scene load's it's text from the how_to_play.txt file. Just update this file to provide instructions about your game. Note: The How to Place scene is shown before every game session by default.
 
 
 ### What Scene a Button Transitions To

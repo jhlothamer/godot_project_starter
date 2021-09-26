@@ -6,46 +6,71 @@
 [ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/components/file_content_display/file_content_display.tscn" type="PackedScene" id=5]
 
-[node name="howToPlay" type="TextureRect"]
+[node name="HowToPlay" type="TextureRect"]
 self_modulate = Color( 0.34902, 0.160784, 0.619608, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 stretch_mode = 2
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="howToPlayLbl" type="Label" parent="."]
-margin_left = 20.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 20
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 40.0
 margin_top = 20.0
-margin_right = 256.0
+margin_right = 984.0
+margin_bottom = 580.0
+
+[node name="HowToPlayLbl" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 944.0
 margin_bottom = 87.0
 custom_fonts/font = ExtResource( 3 )
 text = "How To Play"
 
-[node name="backBtn" parent="." instance=ExtResource( 4 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -86.0
-margin_right = 175.0
-margin_bottom = 0.0
+[node name="FileContentDisplay" parent="MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 91.0
+margin_right = 944.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+file_path = "res://assets/data/how_to_play.txt"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 496.0
+margin_right = 944.0
+margin_bottom = 560.0
+alignment = 1
+
+[node name="BackBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_right = 127.0
+margin_bottom = 64.0
 text = "Back"
 scene_to_load = "res://scenes/etc/title.tscn"
 
-[node name="playBtn" parent="." instance=ExtResource( 4 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -151.0
-margin_top = -89.0
-margin_right = 0.0
-margin_bottom = 0.0
+[node name="SpacerControl" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 131.0
+margin_right = 827.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="PlayBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 831.0
+margin_right = 944.0
+margin_bottom = 64.0
 text = "Play"
 scene_to_load = "res://scenes/etc/title.tscn"
-
-[node name="fileContentDisplay" parent="." instance=ExtResource( 5 )]
-margin_left = 20.0
-margin_top = 113.0
-margin_right = -20.0
-margin_bottom = -90.0
-file_path = "res://assets/data/how_to_play.txt"

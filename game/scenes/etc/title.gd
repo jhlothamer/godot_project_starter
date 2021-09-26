@@ -1,11 +1,12 @@
 extends TextureRect
 
-onready var exit_btn := $VBoxContainer/exitBtn
+onready var _exit_btn:Button = $ButtonsMarginContainer/VBoxContainer/ExitBtn
+onready var _title_lbl: Label = $TitleMarginContainer/TitleLbl
 
 func _ready():
-	$TitleLbl.text = ProjectSettings.get_setting("application/config/name")
+	_title_lbl.text = ProjectSettings.get_setting("application/config/name")
 	if OS.get_name() == "HTML5":
-		exit_btn.visible = false
+		_exit_btn.visible = false
 
 func _on_exitBtn_pressed():
 	get_tree().quit()
