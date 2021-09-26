@@ -13,10 +13,10 @@ var _frame_counter := 0
 var _directory_name := ""
 var _file_counter := 0
 var _crop_size: Vector2
-
 var _user_data_directory: Directory = Directory.new()
+var _threads := []
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	_user_data_directory.open("user://")
 	_crop_size = _cover_control.rect_size
@@ -25,11 +25,7 @@ func _ready():
 func get_date_time_string():
 	# year, month, day, weekday, dst (daylight savings time), hour, minute, second.
 	var datetime = OS.get_datetime()
-	return String(datetime["year"]) + i_to_padded(datetime["month"],2) + i_to_padded(datetime["day"],2) + "_" + i_to_padded(datetime["hour"],2) + i_to_padded(datetime["minute"],2) + i_to_padded(datetime["second"],2)
-
-
-func i_to_padded(i : int, digits: int) -> String:
-	return String(i).pad_zeros(digits)
+	return "%d%02d%02d_%02d%02d%02d" % [datetime["year"], datetime["month"], datetime["day"], datetime["hour"], datetime["minute"], datetime["second"]]
 
 
 func _on_SingleScreenShotBtn_pressed():
@@ -70,9 +66,20 @@ func _process(delta):
 
 func _take_screen_shot():
 	var image: Image = get_viewport().get_texture().get_data()
+	var thread := Thread.new()
+	_threads.append(thread)
+	thread.start(self, "_save_image", [image, thread])
+
+
+func _save_image(data: Array) -> void:
+	var image: Image = data[0]
 	image.flip_y()
 	if resize_factor != 1.0:
 		var original_size = image.get_size()
 		image.resize(original_size.x*resize_factor, original_size.y*resize_factor, Image.INTERPOLATE_BILINEAR)
 	image.crop(_crop_size.x*resize_factor, _crop_size.y*resize_factor)
-	image.save_png("user://" + _directory_name + "/" + i_to_padded(_file_counter,4) + ".png")
+	var error = image.save_png("user://%s/%04d.png" % [_directory_name, _file_counter])
+	if error != OK:
+		printerr("CoverImageGenerator: error while saving image %d" % error)
+	_threads.erase(data[1])
+
