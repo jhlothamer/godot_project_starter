@@ -27,7 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 TransitionMgr="*res://utils/transition_mgr.tscn"
-ScreenShotMgr="*res://utils/screen_shot_mgr.tscn"
+ScreenshotMgr="*res://utils/screenshot_mgr.tscn"
 
 [debug]
 
@@ -75,8 +75,7 @@ ui_down={
 }
 toggle_screenshots={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777255,"unicode":0,"echo":false,"script":null)
- ]
+"events": [  ]
 }
 
 [rendering]
