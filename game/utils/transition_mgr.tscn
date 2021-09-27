@@ -67,4 +67,5 @@ polygon = PoolVector2Array( -2000, -2000, -2000, 2000, 2000, 2000, 2000, -2000 )
 [node name="fadeAnimation" type="AnimationPlayer" parent="."]
 anims/fadeIn = SubResource( 1 )
 anims/fadeOut = SubResource( 2 )
+
 [connection signal="animation_finished" from="fadeAnimation" to="." method="_on_fadeAnimation_animation_finished"]

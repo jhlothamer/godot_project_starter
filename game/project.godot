@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 TransitionMgr="*res://utils/transition_mgr.tscn"
+ScreenshotMgr="*res://utils/screenshot_mgr.tscn"
 
 [debug]
 
@@ -35,6 +36,10 @@ gdscript/warnings/unused_class_variable=true
 [global]
 
 monitor=false
+transition_mgr_default_speed=0.5
+screenshot_mgr_max_images=1000
+screenshot_mgr_resize_factor=1.0
+screenshot_mgr_toggle_action_name="toggle_screenshots"
 
 [input]
 
@@ -68,7 +73,7 @@ ui_down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
  ]
 }
-screen_shot={
+toggle_screenshots={
 "deadzone": 0.5,
 "events": [  ]
 }

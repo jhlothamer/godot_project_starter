@@ -51,7 +51,7 @@ __meta__ = {
 margin_right = 301.0
 margin_bottom = 389.0
 custom_fonts/font = ExtResource( 1 )
-text = "This scene takes screenshots of the area of the Cover control.  You can add anything to it and animate as desired to create the images to become an animated GIF.  The size ofthe Cover control determines the size of the images.  The recommended size of cover images/GIFs for Itch.io is 630x500.
+text = "This scene takes screenshots of the area of the Cover control.  You can add anything to it and animate as desired to create the images to become an animated GIF.  The size of the Cover control determines the size of the images.  The recommended size of cover images/GIFs for Itch.io is 630x500.
 
 Warning!  Many image files can be generated quickly!"
 autowrap = true
@@ -69,5 +69,6 @@ margin_right = 301.0
 margin_bottom = 491.0
 custom_fonts/font = ExtResource( 1 )
 text = "Start Capturing Screen Shots"
+
 [connection signal="pressed" from="VBoxContainer/SingleScreenShotBtn" to="." method="_on_SingleScreenShotBtn_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartStopScreenShotsBtn" to="." method="_on_StartStopScreenShotsBtn_pressed"]
