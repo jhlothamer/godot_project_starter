@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ui/dialog_background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ui/game_over_dialog.gd" type="Script" id=4]
+
+[node name="GameOverDialog" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -198.0
+margin_top = -111.5
+margin_right = 198.0
+margin_bottom = 111.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 396.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 1 )
+text = "Game Over"
+align = 1
+
+[node name="RetryBtn" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 91.0
+margin_right = 396.0
+margin_bottom = 155.0
+text = "Retry"
+align = 1
+
+[node name="MainMenuBtn" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 159.0
+margin_right = 396.0
+margin_bottom = 223.0
+text = "Main Menu"
+align = 1
+scene_to_load = "res://scenes/etc/title.tscn"
