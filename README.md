@@ -8,6 +8,7 @@ There are a few things every game should have, even a quick project hacked out d
 - Crediting your work and the works of others
 - Instructions on how to play the game
 - Transition affects between scenes
+- A hud (heads up display) with Pause and Game Over dialogs
 
 All of this is somewhat configurable, but you can also completely modify the scenes if you want, or even replace them. But for a game jam, or a simple prototype build where you don't want or can't spend the time on such things, this project may be for you.
 
@@ -42,6 +43,27 @@ The buttons have a custom property called "Scene To Load". Just set this to the 
 
 ### Button Transition Speed and Sound Fade Out/In
 The buttons use the transition manager (see below), which allows for a fade out/in affect when switching scenes. You can set the transition speed (in seconds) and whether the audio fades out/in. Note that a speed of zero or less will cause the default speed to be used. That speed is found in the Project Settings -> Globals -> Transition Mgr Default Speed.
+
+## Pause and Game Over Dialogs
+The pause and game over dialogs are contained in a scene called a hud.  To include the dialogs in your game, just instance the hud scene into your game's scene.
+
+### Pause Dialog
+The pause dialog is setup to automatically appear when the "pause" action is pressed.  This action is set up in the Input Map in the Project Settings.  Out of the box the pause dialog will popup when the escape key or start button on a gamepad are pressed.
+
+The pause dialog has 3 buttons: a resume, restart and main menu button.  Resume hides the pause menu.  Restart does nothing out of the box: you'll have to set the "Scene To Load" property to your games main scene or connect the button's pressed event to a new function.  The main menu button takes the player to the title scene.
+
+### Game Over Dialog
+The game over dialog automatically appears when the "game_over" action is "pressed".  Of course, there's no button for this.  You must send this action in code to initiate the game over dialog.  Here's the code for that.
+
+> 	var a = InputEventAction.new()<br>
+> 	a.action = "game_over"<br>
+> 	a.pressed = true<br>
+> 	Input.parse_input_event(a)
+
+### Other Dialogs
+You can add additional dialogs by creating a new Control scene with DialogBackground child node and the additional dialog buttons/controls you need to add.
+
+Whenever the custom control appears, either in reaction to an event or by command, you'll want to set the paused property of the scene tree to true to pause the game.  And don't forget to set it back to false when the dialog disappears.
 
 ## Other Goodies
 ### Transition Manager
