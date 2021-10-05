@@ -89,6 +89,7 @@ The screenshot manager has several settings located in the Project Settings unde
 - Screenshot Mgr Max Images - the maximum number of screenshots taken at a time. Default is 1000.
 - Screenshot Mgr Resize Factor - Use this to shrink (or enlarge) the images saved. Default is 1.0 - so no resizing by default.
 - Screenshot Mgr Toggle Action Name - defaulted to "toggle_screenshots".
+- Screenshot Mgr Frame Delay - Controls how often a frame is saved as a screenshot.  This corresponds to the frame delay when making  a gif out of the images.  Default is 0.1, which corresponds to a frame delay of 10/100 of a second between animated gif frames.  This default results in a smoothly animated gif that is also smaller as well as a lot fewer image files being created.
 
 ### Cover Image Generator Scene
 Creating a cover image for sites like itch.io is easy to do with game assets added to this non-game scene. Just add the assets, labels and animations and hook up the start of any animations with the start/stop button. This scene will capture screenshots that are cropped to the size of the "Cover" control node in the scene.

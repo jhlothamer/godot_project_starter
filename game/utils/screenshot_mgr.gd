@@ -1,19 +1,26 @@
 extends Node
 
-var _screenshot_max : int = 1000
-var _resize_factor : float = 1.0
-var _screenshot_action_name : String = "toggle_screenshots"
+onready var _user_data_dir := OS.get_user_data_dir()
+onready var _path_separator:= "\\" if _user_data_dir.find("\\") > -1 else "/"
+
+
+var _screenshot_max := 1000
+var _resize_factor := 1.0
+var _screenshot_action_name := "toggle_screenshots"
+var _frame_delay := 0.2
 var _directory_name := ""
 var _file_counter := 0
-var _user_data_directory : Directory = Directory.new()
+var _user_data_directory := Directory.new()
 var _threads := []
+var _time_since_last_frame := 0.0
+var _stopwatch := Stopwatch.new()
 
 
 func _ready():
 	if !OS.has_feature("debug"):
 		queue_free()
 		return
-	set_process(false)
+	set_physics_process(false)
 	_user_data_directory.open("user://")
 	_init_settings()
 
@@ -29,20 +36,30 @@ func _init_settings():
 	temp = ProjectSettings.get_setting("global/screenshot_mgr_toggle_action_name")
 	if temp:
 		_screenshot_action_name = temp
+	
+	temp = ProjectSettings.get_setting("global/screenshot_mgr_frame_delay")
+	if temp:
+		_frame_delay = temp
 
 
 func _input(event):
 	if !event.is_action_pressed(_screenshot_action_name) or event.is_echo():
 		return
-	if !is_processing():
+	if !is_physics_processing():
 		_directory_name = get_date_time_string()
 		_file_counter = 0
 		_user_data_directory.make_dir(_directory_name)
 		print("starting screenshots")
-		set_process(true)
+		print("screenshots will be saved to:\r\n%s%s%s" % [_user_data_dir, _path_separator, _directory_name])
+		_stopwatch.start()
+		set_physics_process(true)
 	else:
-		print("stopping screenshots with %d shots taken." % _file_counter)
-		set_process(false)
+		_stopwatch.stop()
+		var seconds = _stopwatch.get_elapsed_msec() / 1000.0
+		var files_per_sec = _file_counter / seconds
+		print("stopping screenshots")
+		print("Stats: files: %d, elapsed seconds: %f, file/sec: %f" % [_file_counter, seconds, files_per_sec])
+		set_physics_process(false)
 
 
 func get_date_time_string():
@@ -51,11 +68,20 @@ func get_date_time_string():
 	return "%d%02d%02d_%02d%02d%02d" % [datetime["year"], datetime["month"], datetime["day"], datetime["hour"], datetime["minute"], datetime["second"]]
 
 
-func _process(delta):
+func _physics_process(delta):
 	if _file_counter >= _screenshot_max:
-		print("Max screenshots reached.  Stopping screenshots with %d shots taken." % _file_counter)
-		set_process(false)
+		_stopwatch.stop()
+		print("Max screenshots reached.")
+		var seconds = _stopwatch.get_elapsed_msec() / 1000.0
+		var files_per_sec = _file_counter / seconds
+		print("Stats: files: %d, elapsed seconds: %f, file/sec: %f" % [_file_counter, seconds, files_per_sec])
+		set_physics_process(false)
 		return
+	
+	_time_since_last_frame += delta
+	if _time_since_last_frame < _frame_delay:
+		return
+	_time_since_last_frame -= _frame_delay
 
 	var image = get_viewport().get_texture().get_data()
 	var thread := Thread.new()
