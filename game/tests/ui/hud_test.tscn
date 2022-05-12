@@ -1,16 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/ui/hud.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tests/ui/hud_test.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/themes/global.tres" type="Theme" id=4]
 
 [node name="HudTest" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 4 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Hud" parent="." instance=ExtResource( 1 )]
 
@@ -37,7 +36,6 @@ __meta__ = {
 [node name="InstructionsLbl" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 681.0
 margin_bottom = 109.0
-custom_fonts/font = ExtResource( 3 )
 text = "To test the hud:
   Press escape key to bring up pause dialog
   Press button below to bring up game over
@@ -60,7 +58,6 @@ __meta__ = {
 margin_top = 200.0
 margin_right = 681.0
 margin_bottom = 365.0
-custom_fonts/font = ExtResource( 3 )
 text = "Game Over dialog triggered by the game_over input action.  You can 
 induce this input event in code as follows:
      var a = InputEventAction.new()

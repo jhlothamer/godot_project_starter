@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 onready var _exit_btn:Button = $ButtonsMarginContainer/VBoxContainer/ExitBtn
 onready var _title_lbl: Label = $TitleMarginContainer/TitleLbl

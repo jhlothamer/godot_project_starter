@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/fonts/buttons.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/components/transition_button/transition_button.gd" type="Script" id=2]
 
 [node name="Button" type="Button"]
 margin_right = 12.0
 margin_bottom = 20.0
-custom_fonts/font = ExtResource( 1 )
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Button"
 flat = true
 align = 0
@@ -14,4 +14,5 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="." to="." method="_on_Button_pressed"]

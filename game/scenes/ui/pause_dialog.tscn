@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/pause_dialog.gd" type="Script" id=3]
 [ext_resource path="res://scenes/ui/dialog_background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/themes/global.tres" type="Theme" id=5]
 
 [node name="PauseDialog" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 5 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

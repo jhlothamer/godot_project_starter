@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/fonts/text.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/components/file_content_display/file_content_display.gd" type="Script" id=2]
 
 [node name="fileContentDisplay" type="TextEdit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_default_cursor_shape = 0
-custom_fonts/font = ExtResource( 1 )
 text = "set file path"
 readonly = true
 script = ExtResource( 2 )

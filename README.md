@@ -29,14 +29,25 @@ If you use this project starter then they are a few things you'll want to change
 
 ## What's Configurable?
 
+### Background of Title, Credit, How to Play Scenes
+These scenes all use another scene for their background/background color.  It's called scene_background.  It's located in the same folder these other scenes are (scenes/etc).
+
+To change the background color of all these scenes, just modify the Self Modulate color on scene_background.
+
+### Theme
+The Godot project starter uses Godot's theme system.  The theme resource file used can be found in assets/themes and is called global.tres.  You can modify fonts, colors, etc. for buttons, labels, edit, text edits, etc. by double clicking on this file in the Godot file system dock and use the theme editor that shows up.
+
+#### Fonts
+There are three font resources for titles, buttons and text.  These are located in assets/fonts.  To update the font of all titles, buttons or text provided in the project starter, just change the settings of these resources.  The global theme (above) also uses the resources.
+
 ### Title Scene Game Title
 The Title scene uses the configured application name for the title. Just change the Name under Application > Config in the Project Settings. Note: this will take affect at runtime only.
 
 ### Credits Scene Text
-The Credits scene loads it's text from the credits.txt file. Just update this file to give credit for any asset or component you need to. It's ALWAYS a good idea to list credit for any asset you don't own.
+The Credits scene loads it's text from the credits.txt file, which is located in the assets/data folder. Just update this file to give credit for any asset or component you need to. It's ALWAYS a good idea to list credit for any asset you don't own.
 
 ### How to Play Text
-The How to Play scene load's it's text from the how_to_play.txt file. Just update this file to provide instructions about your game. Note: The How to Place scene is shown before every game session by default.
+The How to Play scene load's it's text from the how_to_play.txt file, which is located in the assets/data folder. Just update this file to provide instructions about your game. Note: The How to Place scene is shown before every game session by default.
 
 ### What Scene a Button Transitions To
 The buttons have a custom property called "Scene To Load". Just set this to the resource path of the scene you want to transition to when the button is clicked.
