@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/etc/scene_background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/etc/title.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/title.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/themes/title_labels.tres" type="Theme" id=3]
 [ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/themes/global.tres" type="Theme" id=5]
 
@@ -23,16 +23,13 @@ anchor_right = 1.0
 margin_bottom = 127.0
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TitleLbl" type="Label" parent="TitleMarginContainer"]
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 1024.0
 margin_bottom = 127.0
-custom_fonts/font = ExtResource( 3 )
+theme = ExtResource( 3 )
 text = "Game Title"
 autowrap = true
 __meta__ = {

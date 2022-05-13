@@ -37,6 +37,9 @@ To change the background color of all these scenes, just modify the Self Modulat
 ### Theme
 The Godot project starter uses Godot's theme system.  The theme resource file used can be found in assets/themes and is called global.tres.  You can modify fonts, colors, etc. for buttons, labels, edit, text edits, etc. by double clicking on this file in the Godot file system dock and use the theme editor that shows up.
 
+#### Titles
+Title labels in the project starter use a different theme than the global one described above.  Instead they use the title theme (resource file is title.tres located in the assets/themes folder).  This way titles can be given different fonts and other theme settings than regular labels.
+
 #### Fonts
 There are three font resources for titles, buttons and text.  These are located in assets/fonts.  To update the font of all titles, buttons or text provided in the project starter, just change the settings of these resources.  The global theme (above) also uses the resources.
 
