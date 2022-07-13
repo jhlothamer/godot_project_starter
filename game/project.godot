@@ -9,6 +9,51 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Object",
+"class": "InputEventDisplayNameUtil",
+"language": "GDScript",
+"path": "res://utils/input_map/input_event_display_name_util.gd"
+}, {
+"base": "Object",
+"class": "InputEventUtil",
+"language": "GDScript",
+"path": "res://utils/input_map/input_event_util.gd"
+}, {
+"base": "Reference",
+"class": "InputMouseSettings",
+"language": "GDScript",
+"path": "res://utils/input_map/input_mouse_settings.gd"
+}, {
+"base": "Object",
+"class": "InputPromptUtil",
+"language": "GDScript",
+"path": "res://utils/input_map/input_prompt_util.gd"
+}, {
+"base": "WindowDialog",
+"class": "InputRemapDialog",
+"language": "GDScript",
+"path": "res://scenes/ui/settings/input_remap_dialog.gd"
+}, {
+"base": "Reference",
+"class": "InputSettingsAction",
+"language": "GDScript",
+"path": "res://utils/input_map/input_settings_action.gd"
+}, {
+"base": "Reference",
+"class": "InputSettingsActionWrapper",
+"language": "GDScript",
+"path": "res://scenes/ui/settings/input_settings_action_wrapper.gd"
+}, {
+"base": "Reference",
+"class": "InputSettingsCategory",
+"language": "GDScript",
+"path": "res://utils/input_map/input_settings_category.gd"
+}, {
+"base": "Reference",
+"class": "InputSettingsCategoryReader",
+"language": "GDScript",
+"path": "res://utils/input_map/input_settings_category_reader.gd"
+}, {
 "base": "Reference",
 "class": "Stopwatch",
 "language": "GDScript",
@@ -20,6 +65,15 @@ _global_script_classes=[ {
 "path": "res://scenes/components/transition_button/transition_button.gd"
 } ]
 _global_script_class_icons={
+"InputEventDisplayNameUtil": "",
+"InputEventUtil": "",
+"InputMouseSettings": "",
+"InputPromptUtil": "",
+"InputRemapDialog": "",
+"InputSettingsAction": "",
+"InputSettingsActionWrapper": "",
+"InputSettingsCategory": "",
+"InputSettingsCategoryReader": "",
 "Stopwatch": "",
 "TransitionButton": ""
 }
@@ -34,6 +88,8 @@ config/icon="res://icon.png"
 
 TransitionMgr="*res://utils/transition_mgr.tscn"
 ScreenshotMgr="*res://utils/screenshot_mgr.tscn"
+InputMapMgr="*res://utils/input_map/input_map_mgr.gd"
+VolumeSettingsMgr="*res://utils/volume_settings_mgr.gd"
 
 [debug]
 
@@ -94,6 +150,40 @@ pause={
 game_over={
 "deadzone": 0.5,
 "events": [  ]
+}
+next_settings_tab={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+previous_settings_tab={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [rendering]

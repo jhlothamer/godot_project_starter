@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/themes/global.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/ui/settings/volume_settings_ui.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/volume_settings_ui/bong_001.ogg" type="AudioStream" id=3]
+
+[node name="VolumeSettingsUI" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -485.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 115.0
+
+[node name="LeftSpacer" type="Control" parent="HBoxContainer"]
+margin_right = 172.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+margin_left = 176.0
+margin_right = 847.0
+margin_bottom = 115.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="HBoxContainer/GridContainer"]
+margin_right = 151.0
+margin_bottom = 25.0
+text = "Master Volume"
+
+[node name="MasterVolumeHSlider" type="HSlider" parent="HBoxContainer/GridContainer"]
+margin_left = 171.0
+margin_right = 671.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 500, 0 )
+min_value = -80.0
+max_value = 6.0
+
+[node name="SoundFxVolumeLabel" type="Label" parent="HBoxContainer/GridContainer"]
+margin_top = 45.0
+margin_right = 151.0
+margin_bottom = 70.0
+text = "Sound Volume"
+
+[node name="SoundFxVolumeHSlider" type="HSlider" parent="HBoxContainer/GridContainer"]
+margin_left = 171.0
+margin_top = 45.0
+margin_right = 671.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 500, 0 )
+min_value = -80.0
+max_value = 6.0
+
+[node name="MusicVolumeLabel" type="Label" parent="HBoxContainer/GridContainer"]
+margin_top = 90.0
+margin_right = 151.0
+margin_bottom = 115.0
+text = "Music Volume"
+
+[node name="MusicVolumeHSlider" type="HSlider" parent="HBoxContainer/GridContainer"]
+margin_left = 171.0
+margin_top = 90.0
+margin_right = 671.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 500, 0 )
+min_value = -80.0
+max_value = 6.0
+
+[node name="RightSpacer" type="Control" parent="HBoxContainer"]
+margin_left = 851.0
+margin_right = 1024.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="UpdateVolumeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SoundFx"

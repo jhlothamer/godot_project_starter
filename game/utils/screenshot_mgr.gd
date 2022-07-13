@@ -21,7 +21,8 @@ func _ready():
 		queue_free()
 		return
 	set_physics_process(false)
-	_user_data_directory.open("user://")
+	if OK != _user_data_directory.open("user://"):
+		printerr("ScreenshotMgr: could not open user data directory")
 	_init_settings()
 
 func _init_settings():
@@ -48,7 +49,9 @@ func _input(event):
 	if !is_physics_processing():
 		_directory_name = get_date_time_string()
 		_file_counter = 0
-		_user_data_directory.make_dir(_directory_name)
+		if OK != _user_data_directory.make_dir(_directory_name):
+			printerr("ScreenshotMgr: could not make directory for screenshots: %s" % _directory_name)
+			return
 		print("starting screenshots")
 		print("screenshots will be saved to:\r\n%s%s%s" % [_user_data_dir, _path_separator, _directory_name])
 		_stopwatch.start()
@@ -86,7 +89,8 @@ func _physics_process(delta):
 	var image = get_viewport().get_texture().get_data()
 	var thread := Thread.new()
 	_threads.append(thread)
-	thread.start(self, "_save_image", [image, thread])
+	if OK != thread.start(self, "_save_image", [image, thread]):
+		printerr("ScreenshotMgr: could not start thread to complete saving of screenshot image.")
 	_file_counter += 1
 
 

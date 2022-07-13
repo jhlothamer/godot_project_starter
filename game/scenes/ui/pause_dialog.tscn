@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/themes/title_labels.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/pause_dialog.gd" type="Script" id=3]
 [ext_resource path="res://scenes/ui/dialog_background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/themes/global.tres" type="Theme" id=5]
+[ext_resource path="res://scenes/ui/settings_dialog.tscn" type="PackedScene" id=6]
 
 [node name="PauseDialog" type="Control"]
 anchor_right = 1.0
@@ -23,9 +24,6 @@ margin_left = -138.5
 margin_top = -145.5
 margin_right = 138.5
 margin_bottom = 145.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 277.0
@@ -34,19 +32,19 @@ theme = ExtResource( 1 )
 text = "Paused"
 align = 1
 
-[node name="Resume" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="ResumeBtn" type="Button" parent="VBoxContainer"]
 margin_top = 91.0
 margin_right = 277.0
 margin_bottom = 155.0
 text = "Resume"
-align = 1
+flat = true
 
-[node name="RestartBtn" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="Settingsbtn" type="Button" parent="VBoxContainer"]
 margin_top = 159.0
 margin_right = 277.0
 margin_bottom = 223.0
-text = "Restart"
-align = 1
+text = "Settings"
+flat = true
 
 [node name="MainMenuBtn" parent="VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 227.0
@@ -56,4 +54,8 @@ text = "Main Menu"
 align = 1
 scene_to_load = "res://scenes/etc/title.tscn"
 
-[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[node name="SettingsDialog" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[connection signal="pressed" from="VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settingsbtn" to="." method="_on_Settingsbtn_pressed"]

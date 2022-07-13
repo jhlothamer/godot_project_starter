@@ -71,3 +71,4 @@ margin_right = 944.0
 margin_bottom = 64.0
 text = "Play"
 scene_to_load = "res://scenes/etc/title.tscn"
+grab_focus_on_start = true

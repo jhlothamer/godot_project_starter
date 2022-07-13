@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/themes/global.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/ui/settings/settings_ui.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ui/settings/volume_settings_ui.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ui/settings/control_settings_ui.tscn" type="PackedScene" id=4]
+
+[node name="SettingsUI" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_constants/separation = 0
+script = ExtResource( 2 )
+
+[node name="TabContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 68.0
+
+[node name="Tabs" type="Tabs" parent="TabContainer"]
+margin_right = 1024.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+
+[node name="TabPanelContainer" type="PanelContainer" parent="."]
+margin_top = 68.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+
+[node name="Volume" type="Panel" parent="TabPanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 525.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabPanelContainer/Volume"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VolumeSettingsUI" parent="TabPanelContainer/Volume/MarginContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 990.0
+margin_bottom = 498.0
+
+[node name="Controls" type="Panel" parent="TabPanelContainer"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 521.0
+
+[node name="ControlSettingsUI" parent="TabPanelContainer/Controls" instance=ExtResource( 4 )]
+
+[connection signal="tab_changed" from="TabContainer/Tabs" to="." method="_on_Tabs_tab_changed"]
+[connection signal="remap_ended" from="TabPanelContainer/Controls/ControlSettingsUI" to="." method="_on_ControlSettings_remap_ended"]
+[connection signal="remap_started" from="TabPanelContainer/Controls/ControlSettingsUI" to="." method="_on_ControlSettings_remap_started"]

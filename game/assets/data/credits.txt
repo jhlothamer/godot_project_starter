@@ -1,1 +1,16 @@
 update res://assets/data/credits.txt
+
+Art:
+"FREE Keyboard and controllers prompts pack" by xelu (https://opengameart.org/content/free-keyboard-and-controllers-prompts-pack) 
+licensed under CC0 1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
+
+Sound:
+bong_001.ogg from "Interface Sounds" by Kenney
+https://www.kenney.nl/assets/interface-sounds
+License: CC0 1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
+
+Fonts:
+https://fontlibrary.org/en/font/jellee-typeface
+by Alfredo Marco Pradil
+License: OFL (SIL Open Font License) (http://scripts.sil.org/OFL)
+
