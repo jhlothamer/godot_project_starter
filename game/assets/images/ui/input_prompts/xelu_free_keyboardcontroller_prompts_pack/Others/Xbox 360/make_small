@@ -1,0 +1,5 @@
+#!/bin/sh
+for file in $(ls *.png); do
+    convert  $file -resize 30x30 small_$file
+done
+exit 0

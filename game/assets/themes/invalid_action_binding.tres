@@ -1,0 +1,5 @@
+[gd_resource type="Theme" format=2]
+
+[resource]
+Button/colors/font_color = Color( 0.898039, 0, 1, 1 )
+Button/colors/font_color_focus = Color( 0.992157, 0, 1, 1 )

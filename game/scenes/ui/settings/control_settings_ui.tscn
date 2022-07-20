@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/ui/settings/mouse_settings_ui.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ui/settings/control_settings_ui.gd" type="Script" id=3]
+[ext_resource path="res://scenes/ui/settings/input_remap_dialog.tscn" type="PackedScene" id=4]
+
+[node name="ControlSettingsUI" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+follow_focus = true
+script = ExtResource( 3 )
+
+[node name="ControlSettingsCategoryContainer" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MouseSettingsUI" parent="ControlSettingsCategoryContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 140.0
+
+[node name="ActionBindingCategoriesContainer" type="VBoxContainer" parent="ControlSettingsCategoryContainer"]
+margin_top = 144.0
+margin_right = 1024.0
+margin_bottom = 144.0
+
+[node name="InputRemapDialog" parent="ControlSettingsCategoryContainer" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 148.0
+margin_right = 1024.0
+margin_bottom = 423.0
+
+[connection signal="about_to_show" from="ControlSettingsCategoryContainer/InputRemapDialog" to="." method="_on_InputRemapDialog_about_to_show"]
+[connection signal="popup_hide" from="ControlSettingsCategoryContainer/InputRemapDialog" to="." method="_on_InputRemapDialog_popup_hide"]

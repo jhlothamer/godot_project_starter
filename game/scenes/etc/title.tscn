@@ -42,20 +42,17 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -311.0
-margin_top = -260.0
+margin_top = -328.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 40
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonsMarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 291.0
-margin_bottom = 220.0
+margin_bottom = 288.0
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -66,18 +63,28 @@ margin_right = 271.0
 margin_bottom = 64.0
 text = "New Game"
 scene_to_load = "res://scenes/etc/how_to_play.tscn"
+grab_focus_on_start = true
 
-[node name="CreditsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource( 4 )]
+[node name="SettingsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 68.0
 margin_right = 271.0
 margin_bottom = 132.0
-text = "Credits"
-scene_to_load = "res://scenes/etc/credits.tscn"
+text = "Settings"
+scene_to_load = "res://scenes/etc/settings.tscn"
 
-[node name="ExitBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource( 4 )]
+[node name="CreditsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 136.0
 margin_right = 271.0
 margin_bottom = 200.0
-text = "Exit"
+text = "Credits"
+scene_to_load = "res://scenes/etc/credits.tscn"
 
-[connection signal="pressed" from="ButtonsMarginContainer/VBoxContainer/ExitBtn" to="." method="_on_exitBtn_pressed"]
+[node name="ExitBtn" type="Button" parent="ButtonsMarginContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 271.0
+margin_bottom = 268.0
+text = "Exit"
+flat = true
+align = 0
+
+[connection signal="pressed" from="ButtonsMarginContainer/VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_pressed"]

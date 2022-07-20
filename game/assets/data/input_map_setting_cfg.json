@@ -1,0 +1,38 @@
+{
+	"settings_save_file_path": "user://input_map_settings.json",
+	"bindings_per_action": 3,
+	"bindings_column_names": ["Primary", "Secondary", "Game Pad"],
+	"bindings_column_types": ["key|mouse", "key|mouse", "pad"],
+	"mouse_settings": {
+		"show": false,
+		"default_invert_y": false,
+		"sensitivity": {
+			"min": 0.5,
+			"max": 2.5,
+			"default": 1.5
+		}
+	},
+	"categories": [
+		{
+			"name": "Movement",
+			"actions": [
+				{
+				"action_name": "move_up",
+				"display_name": "Up"
+				},
+				{
+				"action_name": "move_down",
+				"display_name": "Down"
+				},
+				{
+				"action_name": "move_left",
+				"display_name": "Left"
+				},
+				{
+				"action_name": "move_right",
+				"display_name": "Right"
+				},
+			]
+		}
+	]
+}

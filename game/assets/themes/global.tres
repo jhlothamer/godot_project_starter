@@ -6,4 +6,5 @@
 [resource]
 Button/fonts/font = ExtResource( 2 )
 Label/fonts/font = ExtResource( 1 )
+Tabs/fonts/font = ExtResource( 2 )
 TextEdit/fonts/font = ExtResource( 1 )
