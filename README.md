@@ -83,7 +83,7 @@ The save files are all in JSON format and are formatted with indents to make the
 The volume settings are saved in user://sound_settings.json. By default input map and mouse settings are stored in user://input_map_settings.json, but can be configured to be stored elsewhere.
 
 #### Obtaining Settings (InputMapMgr Singleton)
-Obviously the volume and action event bindings take affect immediately an your game doesn't need to worry about any updates to them. But if your game needs the mouse settings, you'll need to use the InputMapMgr singleton.
+Obviously the volume and action event bindings take affect immediately and your game doesn't need to worry about any updates to them. But if your game needs the mouse settings, you'll need to use the InputMapMgr singleton.
 
 ##### InputMapMgr.get_mouse_settings()
 Use this function to get the InputMouseSettings object with the current sensitivity and invert_y settings.
