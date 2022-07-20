@@ -59,7 +59,7 @@ The How to Play scene load's it's text from the how_to_play.txt file, which is l
 The project starter comes with a Settings UI that allows for bus volumes and input map bindings to be set by the player.
 
 #### Volume Settings
-The project starter has 3 busses and therefore 3 separate settings for volume the player can set. This is Master, Music and SoundFx.
+The project starter has 3 buses and therefore 3 separate settings for volume the player can set. This is Master, Music and SoundFx.
 
 Be sure to set the bus on AudioStreamPlayer nodes to the appropriate audio bus.
 

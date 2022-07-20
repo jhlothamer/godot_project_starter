@@ -50,13 +50,6 @@ static func get_display_name(event: InputEvent) -> String:
 	elif event is InputEventMouseButton:
 		var mb: InputEventMouseButton = event
 		return MOUSE_BUTTON_TEXT[mb.button_index]
-#			match(mb.button_index):
-#				BUTTON_LEFT:
-#					return "Left Button"
-#				BUTTON_RIGHT:
-#					return "Right Button"
-#				BUTTON_MIDDLE:
-#					return "Middle Button"
 	elif event is InputEventJoypadButton:
 		var jb: InputEventJoypadButton = event
 		return JOY_BUTTON_TEXT[jb.button_index]

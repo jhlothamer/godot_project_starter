@@ -7,7 +7,7 @@ const SOUND_SETTINGS_FILE_PATH = "user://sound_settings.json"
 var _data := {}
 
 
-var _busses = [
+var _buses = [
 	"Master",
 	"Music",
 	"SoundFx"
@@ -39,7 +39,7 @@ func _load_settings() -> void:
 
 
 func save_current_settings() -> void:
-	for bus_name in _busses:
+	for bus_name in _buses:
 		var index := AudioServer.get_bus_index(bus_name)
 		_data[bus_name] = AudioServer.get_bus_volume_db(index)
 	
