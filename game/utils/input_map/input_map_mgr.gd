@@ -70,7 +70,6 @@ func _interpret_bindings_column_types(type_string_array: Array) -> void:
 		if type_string == "any" or type_string == "*":
 			bindings_column_types.append(BINDINGS_TYPE_TO_TYPE_NAME.keys())
 		else:
-			pass
 			var parts = type_string.split("|")
 			var binding_array := []
 			for part in parts:
