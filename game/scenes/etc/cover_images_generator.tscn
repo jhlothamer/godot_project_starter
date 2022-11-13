@@ -1,169 +1,177 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://xqv1vvaogw4g"]
 
-[ext_resource path="res://assets/fonts/text.tres" type="FontFile" id=1]
-[ext_resource path="res://assets/images/white_square_64x64.png" type="Texture2D" id=2]
-[ext_resource path="res://scenes/etc/cover_images_generator.gd" type="Script" id=3]
-[ext_resource path="res://assets/fonts/buttons.tres" type="FontFile" id=4]
-[ext_resource path="res://assets/themes/global.tres" type="Theme" id=5]
+[ext_resource type="Texture2D" uid="uid://bk6r7p1kd5oja" path="res://assets/images/white_square_64x64.png" id="2"]
+[ext_resource type="Script" path="res://scenes/etc/cover_images_generator.gd" id="3"]
+[ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="5"]
 
 [node name="CoverImagesGenerator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 5 )
-script = ExtResource( 3 )
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5")
+script = ExtResource("3")
 
 [node name="Cover" type="Control" parent="."]
+custom_minimum_size = Vector2(630, 500)
+layout_mode = 1
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-minimum_size = Vector2( 630, 500 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="Cover"]
-self_modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
+self_modulate = Color(0.478431, 0.478431, 0.478431, 1)
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Cover/TextureRect"]
+layout_mode = 0
 offset_right = 630.0
 offset_bottom = 500.0
-custom_constants/offset_right = 10
-custom_constants/offset_top = 30
-custom_constants/offset_left = 10
-custom_constants/offset_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="Label" type="RichTextLabel" parent="Cover/TextureRect/MarginContainer"]
+layout_mode = 2
 offset_left = 10.0
 offset_top = 30.0
 offset_right = 620.0
 offset_bottom = 490.0
-custom_fonts/normal_font = ExtResource( 4 )
+theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center][tornado]Add animations here[/tornado][/center]"
-text = "Add animations here"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -371.0
-custom_constants/offset_right = 20
-custom_constants/offset_top = 20
-custom_constants/offset_left = 20
-custom_constants/offset_bottom = 20
+offset_left = -512.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 351.0
-offset_bottom = 580.0
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 492.0
+offset_bottom = 628.0
+theme_override_constants/separation = 20
 
 [node name="SingleScreenShotBtn" type="Button" parent="MarginContainer/VBoxContainer"]
-offset_right = 331.0
-offset_bottom = 31.0
-custom_fonts/font = ExtResource( 1 )
+layout_mode = 2
+offset_right = 472.0
+offset_bottom = 33.0
+theme_type_variation = &"SmallButton"
 text = "Take Single ScreenShot"
 
 [node name="FrameDelayHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 51.0
-offset_right = 331.0
-offset_bottom = 76.0
+layout_mode = 2
+offset_top = 53.0
+offset_right = 472.0
+offset_bottom = 84.0
 
 [node name="FrameDelayLabel" type="Label" parent="MarginContainer/VBoxContainer/FrameDelayHBoxContainer"]
-offset_right = 253.0
-offset_bottom = 25.0
+layout_mode = 2
+offset_top = 1.0
+offset_right = 385.0
+offset_bottom = 29.0
 size_flags_horizontal = 3
 text = "Frame Delay"
-autowrap = true
 
 [node name="FrameDelaySpin" type="SpinBox" parent="MarginContainer/VBoxContainer/FrameDelayHBoxContainer"]
-offset_left = 257.0
-offset_right = 331.0
-offset_bottom = 25.0
+layout_mode = 2
+offset_left = 389.0
+offset_right = 472.0
+offset_bottom = 31.0
 step = 0.01
 value = 0.1
 
 [node name="ResizeFactorHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 96.0
-offset_right = 331.0
-offset_bottom = 121.0
+layout_mode = 2
+offset_top = 104.0
+offset_right = 472.0
+offset_bottom = 135.0
 
 [node name="ResizeFactorLabel" type="Label" parent="MarginContainer/VBoxContainer/ResizeFactorHBoxContainer"]
-offset_right = 253.0
-offset_bottom = 25.0
+layout_mode = 2
+offset_top = 1.0
+offset_right = 385.0
+offset_bottom = 29.0
 size_flags_horizontal = 3
 text = "Resize Factor"
-autowrap = true
 
 [node name="ResizeFactorSpin" type="SpinBox" parent="MarginContainer/VBoxContainer/ResizeFactorHBoxContainer"]
-offset_left = 257.0
-offset_right = 331.0
-offset_bottom = 25.0
+layout_mode = 2
+offset_left = 389.0
+offset_right = 472.0
+offset_bottom = 31.0
 max_value = 2.0
 step = 0.1
 value = 0.5
 
 [node name="StartStopScreenShotsBtn" type="Button" parent="MarginContainer/VBoxContainer"]
-offset_top = 141.0
-offset_right = 331.0
-offset_bottom = 172.0
-custom_fonts/font = ExtResource( 1 )
+layout_mode = 2
+offset_top = 155.0
+offset_right = 472.0
+offset_bottom = 188.0
+theme_type_variation = &"SmallButton"
 text = "Start Capturing Screen Shots"
 
 [node name="StatusLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-offset_top = 192.0
-offset_right = 331.0
-offset_bottom = 217.0
+layout_mode = 2
+offset_top = 208.0
+offset_right = 472.0
+offset_bottom = 236.0
 text = "Status"
-autowrap = true
 
 [node name="StatusText" type="TextEdit" parent="MarginContainer/VBoxContainer"]
-offset_top = 237.0
-offset_right = 331.0
-offset_bottom = 560.0
+layout_mode = 2
+offset_top = 256.0
+offset_right = 472.0
+offset_bottom = 608.0
 size_flags_vertical = 3
 text = "Ready."
-wrap_enabled = true
+wrap_mode = 1
 
 [node name="InstructionsVBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 1129.0
-offset_top = 42.0
-offset_right = 1560.0
-offset_bottom = 415.0
+layout_mode = 0
+offset_left = 1205.0
+offset_top = 50.0
+offset_right = 1636.0
+offset_bottom = 423.0
 
 [node name="TitleLabel" type="Label" parent="InstructionsVBoxContainer"]
+layout_mode = 2
 offset_right = 431.0
-offset_bottom = 58.0
-custom_fonts/font = ExtResource( 4 )
+offset_bottom = 28.0
 text = "Instructions"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+autowrap_mode = 2
 
 [node name="InstructionsLabel" type="Label" parent="InstructionsVBoxContainer"]
-offset_top = 62.0
+layout_mode = 2
+offset_top = 32.0
 offset_right = 431.0
-offset_bottom = 339.0
+offset_bottom = 287.0
 text = "This scene takes screenshots of the area of the Cover control.  You can add anything to it and animate as desired to create the images to become an animated GIF.  The size of the Cover control determines the size of the images.  The recommended size of cover images/GIFs for Itch.io is 630x500.
 
 Warning!  Many image files can be generated quickly!"
-autowrap = true
+autowrap_mode = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SingleScreenShotBtn" to="." method="_on_SingleScreenShotBtn_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/FrameDelayHBoxContainer/FrameDelaySpin" to="." method="_on_FrameDelaySpin_value_changed"]

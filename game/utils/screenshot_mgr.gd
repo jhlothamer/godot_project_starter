@@ -87,7 +87,7 @@ func _physics_process(delta):
 		return
 	_time_since_last_frame -= _frame_delay
 
-	var image = get_viewport().get_texture().get_data()
+	var image = get_viewport().get_texture().get_image()
 	var thread := Thread.new()
 	_threads.append(thread)
 	if OK != thread.start(Callable(self,"_save_image").bind([image, thread])):
@@ -97,7 +97,6 @@ func _physics_process(delta):
 
 func _save_image(data: Array) -> void:
 	var image: Image = data[0]
-	image.flip_y()
 	if _resize_factor != 1.0:
 		var original_size = image.get_size()
 		image.resize(original_size.x*_resize_factor, original_size.y*_resize_factor, Image.INTERPOLATE_BILINEAR)
