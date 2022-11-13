@@ -1,5 +1,5 @@
 # Godot Project Starter
-This is a starter project for Godot Engine 3.x. To use simply clone or download this repository. Then copy the "game" folder to another location and rename it. You'll then be able to open the copied project in Godot and start updating.
+This is a starter project for Godot Engine 4.x. To use simply clone or download this repository. Then copy the "game" folder to another location and rename it. You'll then be able to open the copied project in Godot and start updating.
 
 ## Why use a Project Starter?
 There are a few things every game should have, even a quick project hacked out during a game jam. Such things are
@@ -89,7 +89,7 @@ Obviously the volume and action event bindings take affect immediately and your 
 Use this function to get the InputMouseSettings object with the current sensitivity and invert_y settings.
 
 ##### input_settings_updated signal
-Connect to the input_settings_updated signal of the InputMapMgr singleton to be alerted when the user has updated any control setting - include the mouse settings. To obtain the updated mouse settings use the InputMapMgr.get_mouse_settings() function.
+Connect to the input_settings_updated signal of the InputMapMgr singleton to be alerted when the user has updated any control setting - including the mouse settings. To obtain the updated mouse settings use the InputMapMgr.get_mouse_settings() function.
 
 ### What Scene a Button Transitions To
 The buttons have a custom property called "Scene To Load". Just set this to the resource path of the scene you want to transition to when the button is clicked.
