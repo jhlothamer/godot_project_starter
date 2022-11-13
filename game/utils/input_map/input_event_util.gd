@@ -34,6 +34,9 @@ static func duplicate_events(events: Array) -> Array:
 static func deserialize_input_events(serialized_input_events: Array) -> Array:
 	var events := []
 	for i in serialized_input_events:
+		if i == null:
+			events.append(null)
+			continue
 		var serialized_input_event: Dictionary = i
 		var event: InputEvent
 		var type:String = serialized_input_event["type"]
@@ -58,6 +61,9 @@ static func deserialize_input_events(serialized_input_events: Array) -> Array:
 static func serialize_input_events(input_events: Array) -> Array:
 	var serialized_input_events := []
 	for i in input_events:
+		if !i:
+			serialized_input_events.append(null)
+			continue
 		var event_data := {}
 		if i is InputEventKey:
 			var ek: InputEventKey = i
