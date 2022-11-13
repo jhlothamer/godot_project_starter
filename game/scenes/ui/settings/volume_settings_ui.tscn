@@ -1,82 +1,88 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://uvx63ijep6l4"]
 
-[ext_resource path="res://assets/themes/global.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/ui/settings/volume_settings_ui.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/volume_settings_ui/bong_001.ogg" type="AudioStream" id=3]
+[ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/ui/settings/volume_settings_ui.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://dwm85ottuyxpy" path="res://assets/sounds/volume_settings_ui/bong_001.ogg" id="3"]
 
 [node name="VolumeSettingsUI" type="VBoxContainer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -485.0
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+offset_bottom = -485.0
+theme = ExtResource("1")
+script = ExtResource("2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 115.0
+offset_right = 1152.0
+offset_bottom = 124.0
 
 [node name="LeftSpacer" type="Control" parent="HBoxContainer"]
-margin_right = 172.0
-margin_bottom = 115.0
-size_flags_horizontal = 3
+custom_minimum_size = Vector2(172, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 172.0
+offset_bottom = 124.0
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
-margin_left = 176.0
-margin_right = 847.0
-margin_bottom = 115.0
-custom_constants/vseparation = 20
-custom_constants/hseparation = 20
+offset_left = 176.0
+offset_right = 976.0
+offset_bottom = 124.0
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
 columns = 2
 
 [node name="MasterVolumeLabel" type="Label" parent="HBoxContainer/GridContainer"]
-margin_right = 151.0
-margin_bottom = 25.0
+offset_right = 149.0
+offset_bottom = 28.0
 text = "Master Volume"
 
 [node name="MasterVolumeHSlider" type="HSlider" parent="HBoxContainer/GridContainer"]
-margin_left = 171.0
-margin_right = 671.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 500, 0 )
+offset_left = 169.0
+offset_right = 800.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
 min_value = -80.0
 max_value = 6.0
 
 [node name="SoundFxVolumeLabel" type="Label" parent="HBoxContainer/GridContainer"]
-margin_top = 45.0
-margin_right = 151.0
-margin_bottom = 70.0
+offset_top = 48.0
+offset_right = 149.0
+offset_bottom = 76.0
 text = "Sound Volume"
 
 [node name="SoundFxVolumeHSlider" type="HSlider" parent="HBoxContainer/GridContainer"]
-margin_left = 171.0
-margin_top = 45.0
-margin_right = 671.0
-margin_bottom = 61.0
-rect_min_size = Vector2( 500, 0 )
+offset_left = 169.0
+offset_top = 48.0
+offset_right = 800.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
 min_value = -80.0
 max_value = 6.0
 
 [node name="MusicVolumeLabel" type="Label" parent="HBoxContainer/GridContainer"]
-margin_top = 90.0
-margin_right = 151.0
-margin_bottom = 115.0
+offset_top = 96.0
+offset_right = 149.0
+offset_bottom = 124.0
 text = "Music Volume"
 
 [node name="MusicVolumeHSlider" type="HSlider" parent="HBoxContainer/GridContainer"]
-margin_left = 171.0
-margin_top = 90.0
-margin_right = 671.0
-margin_bottom = 106.0
-rect_min_size = Vector2( 500, 0 )
+offset_left = 169.0
+offset_top = 96.0
+offset_right = 800.0
+offset_bottom = 112.0
+size_flags_horizontal = 3
 min_value = -80.0
 max_value = 6.0
 
 [node name="RightSpacer" type="Control" parent="HBoxContainer"]
-margin_left = 851.0
-margin_right = 1024.0
-margin_bottom = 115.0
-size_flags_horizontal = 3
+custom_minimum_size = Vector2(172, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 980.0
+offset_right = 1152.0
+offset_bottom = 124.0
 
 [node name="UpdateVolumeSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-bus = "SoundFx"
+stream = ExtResource("3")
+bus = &"SoundFx"

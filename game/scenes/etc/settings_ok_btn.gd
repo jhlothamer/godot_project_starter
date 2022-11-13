@@ -1,6 +1,6 @@
 extends TransitionButton
 
-export var saving_node: NodePath
+@export var saving_node: NodePath
 
 
 func _can_transition() -> bool:

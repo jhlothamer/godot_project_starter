@@ -1,6 +1,6 @@
 extends Control
 
-onready var _retry_btn: Button = $VBoxContainer/RetryBtn
+@onready var _retry_btn: Button = $VBoxContainer/RetryBtn
 
 func _ready():
 	visible = false

@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-onready var _label:Label = $Label
-onready var _grid: GridContainer = $HBoxContainer/GridContainer
+@onready var _label:Label = $Label
+@onready var _grid: GridContainer = $HBoxContainer/GridContainer
 
 var _input_settings_category: InputSettingsCategory
 var _remap_dlg: InputRemapDialog
@@ -29,17 +29,19 @@ func _fill_grid():
 		for j in action._current_events.size():
 			var event: InputEvent = action._current_events[j]
 			var btn := Button.new()
-			btn.rect_min_size.x = 100
+			
+			btn.custom_minimum_size.x = 100
+			btn.theme_type_variation = "SmallButton"
 			if event:
 				btn.text = InputEventDisplayNameUtil.get_display_name(event)
 			var wrapper := InputSettingsActionWrapper.new(action, j, btn)
-			if OK != btn.connect("pressed", self, "_on_remap_button_pressed", [wrapper]):
+			if OK != btn.connect("pressed",Callable(self,"_on_remap_button_pressed").bind(wrapper)):
 				printerr("ActionBindingCategoryUI: can't connect to button's pressed signal??")
 			_grid.add_child(btn)
 			_input_settings_action_wrappers.append(wrapper)
 
 func _on_remap_button_pressed(wrapper: InputSettingsActionWrapper) -> void:
-	_remap_dlg.remap(wrapper)
+	_remap_dlg.remap_input(wrapper)
 
 
 func get_wrappers() -> Array:

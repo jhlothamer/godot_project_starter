@@ -5,9 +5,9 @@ signal remap_ended()
 
 const ACTION_BINDING_CATEGORY_UI = preload("res://scenes/ui/settings/action_binding_category_ui.tscn")
 
-onready var _mouse_settings_ui = $ControlSettingsCategoryContainer/MouseSettingsUI
-onready var _input_remap_dlg:InputRemapDialog = $ControlSettingsCategoryContainer/InputRemapDialog
-onready var _action_binding_categories_container: VBoxContainer = $ControlSettingsCategoryContainer/ActionBindingCategoriesContainer
+@onready var _mouse_settings_ui = $ControlSettingsCategoryContainer/MouseSettingsUI
+@onready var _input_remap_dlg:InputRemapDialog = $ControlSettingsCategoryContainer/InputRemapDialog
+@onready var _action_binding_categories_container: VBoxContainer = $ControlSettingsCategoryContainer/ActionBindingCategoriesContainer
 
 var _mouse_settings: InputMouseSettings
 var _input_settings_categories := []
@@ -26,7 +26,7 @@ func init() -> void:
 	_input_settings_categories = InputMapMgr.get_input_settings_categories()
 	for i in _input_settings_categories:
 		var category:InputSettingsCategory = i
-		var category_ui = ACTION_BINDING_CATEGORY_UI.instance()
+		var category_ui = ACTION_BINDING_CATEGORY_UI.instantiate()
 		_action_binding_categories_container.add_child(category_ui)
 		category_ui.init(category, _input_remap_dlg)
 
@@ -61,7 +61,7 @@ func validate() -> String:
 			if action == wrapper.input_settings_action and binding_index == wrapper.binding_index:
 				wrapper.set_validity(false)
 	
-	return "" if validation_results.empty() else "Unable to save Control settings.  Please fix indicated issues."
+	return "" if validation_results.is_empty() else "Unable to save Control settings.  Please fix indicated issues."
 
 
 func reset() -> void:

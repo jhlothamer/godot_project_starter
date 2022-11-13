@@ -5,8 +5,8 @@ extends Object
 static func duplicate_event(event: InputEvent) -> InputEvent:
 	if event is InputEventKey:
 		var dup := InputEventKey.new()
-		dup.scancode = event.scancode
-		dup.physical_scancode = event.physical_scancode
+		dup.keycode = event.keycode
+		dup.physical_keycode = event.physical_keycode
 		return dup
 	if event is InputEventJoypadButton:
 		var dup := InputEventJoypadButton.new()
@@ -17,7 +17,6 @@ static func duplicate_event(event: InputEvent) -> InputEvent:
 		dup.button_index = event.button_index
 		return dup
 	printerr("InputSettingsAction: could not duplicate event of type %s" % event.get_class())
-	assert(false)
 	return event
 
 
@@ -34,14 +33,17 @@ static func duplicate_events(events: Array) -> Array:
 static func deserialize_input_events(serialized_input_events: Array) -> Array:
 	var events := []
 	for i in serialized_input_events:
+		if i == null:
+			events.append(null)
+			continue
 		var serialized_input_event: Dictionary = i
 		var event: InputEvent
 		var type:String = serialized_input_event["type"]
 		match(type):
 			"InputEventKey":
 				var ek := InputEventKey.new()
-				ek.scancode = serialized_input_event["scancode"]
-				ek.physical_scancode = serialized_input_event["physical_scancode"]
+				ek.keycode = serialized_input_event["scancode"]
+				ek.physical_keycode = serialized_input_event["physical_scancode"]
 				event = ek
 			"InputEventMouseButton":
 				var mb := InputEventMouseButton.new()
@@ -58,12 +60,15 @@ static func deserialize_input_events(serialized_input_events: Array) -> Array:
 static func serialize_input_events(input_events: Array) -> Array:
 	var serialized_input_events := []
 	for i in input_events:
+		if !i:
+			serialized_input_events.append(null)
+			continue
 		var event_data := {}
 		if i is InputEventKey:
 			var ek: InputEventKey = i
 			event_data["type"] = "InputEventKey"
-			event_data["scancode"] = ek.scancode
-			event_data["physical_scancode"] = ek.physical_scancode
+			event_data["scancode"] = ek.keycode
+			event_data["physical_scancode"] = ek.physical_keycode
 		elif i is InputEventMouseButton:
 			var mb: InputEventMouseButton = i
 			event_data["type"] = "InputEventMouseButton"
@@ -88,7 +93,7 @@ static func are_events_same(e1: InputEvent, e2: InputEvent) -> bool:
 	if e1 is InputEventKey:
 		var e1k:InputEventKey = e1
 		var e2k:InputEventKey = e2
-		if e1k.scancode != e2k.scancode or e1k.physical_scancode != e2k.physical_scancode:
+		if e1k.keycode != e2k.keycode or e1k.physical_keycode != e2k.physical_keycode:
 			return false
 	elif e1.button_index != e2.button_index:
 		return false

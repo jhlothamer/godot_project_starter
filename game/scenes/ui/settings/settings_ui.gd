@@ -4,9 +4,9 @@ signal help_message_changed(message)
 
 const HELP_MESSAGE = "Use %%prompt:pad:previous_settings_tab%% or %%prompt:pad:next_settings_tab%% to switch tabs"
 
-onready var _tabs:Tabs = $TabContainer/Tabs
-onready var _tab_panels = $TabPanelContainer.get_children()
-onready var _settings_ui :=[
+@onready var _tabs:TabBar = $TabContainer/TabBar
+@onready var _tab_panels = $TabPanelContainer.get_children()
+@onready var _settings_ui :=[
 	$TabPanelContainer/Volume/MarginContainer/VolumeSettingsUI,
 	$TabPanelContainer/Controls/ControlSettingsUI
 ]
@@ -74,7 +74,7 @@ func validate() -> String:
 	for settings in _settings_ui:
 		if settings.has_method("validate"):
 			var error_msg:String = settings.validate()
-			if !error_msg.empty():
+			if !error_msg.is_empty():
 				return error_msg
 	return ""
 
@@ -99,17 +99,17 @@ func cancel() -> void:
 func _init_prev_next_tab() -> void:
 	if !InputMap.has_action("next_settings_tab") or !InputMap.has_action("previous_settings_tab"):
 		return
-	for event in InputMap.get_action_list("next_settings_tab"):
+	for event in InputMap.action_get_events("next_settings_tab"):
 		if event is InputEventJoypadButton:
 			_game_pad_device_id = event.device
-	for event in InputMap.get_action_list("previous_settings_tab"):
+	for event in InputMap.action_get_events("previous_settings_tab"):
 		if event is InputEventJoypadButton:
 			if _game_pad_device_id != event.device:
 				_game_pad_device_id = -1
 				return
 	call_deferred("_on_joy_connection_changed",_game_pad_device_id, Input.is_joy_known(_game_pad_device_id))
 	
-	if OK != Input.connect("joy_connection_changed", self, "_on_joy_connection_changed"):
+	if OK != Input.connect("joy_connection_changed",Callable(self,"_on_joy_connection_changed")):
 		printerr("SettingsUI: can't connect to joy_connection_changed signal")
 
 

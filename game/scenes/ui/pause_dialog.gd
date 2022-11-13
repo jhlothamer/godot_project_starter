@@ -1,29 +1,29 @@
 extends Control
 
-onready var _resume_btn: Button = $VBoxContainer/ResumeBtn
-onready var _to_show_hide := [
+@onready var _resume_btn: Button = $VBoxContainer/ResumeBtn
+@onready var _to_show_hide := [
 	$DialogBackground,
 	$VBoxContainer
 ]
-onready var _settings_dialog = $SettingsDialog
+@onready var _settings_dialog = $SettingsDialog
 
 func _ready():
 	visible = false
+	set_process_input(true)
 
 func _input(event):
 	if event.is_echo():
 		return
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and !_settings_dialog.visible:
 		if visible:
 			visible = false
 			get_tree().paused = false
-			pause_mode = Node.PAUSE_MODE_STOP
+			process_mode = Node.PROCESS_MODE_PAUSABLE
 		else:
 			visible = true
-			pause_mode = Node.PAUSE_MODE_PROCESS
+			process_mode = Node.PROCESS_MODE_ALWAYS
 			get_tree().paused = true
 			_resume_btn.grab_focus()
-
 
 
 func _on_ResumeBtn_pressed():
@@ -35,7 +35,7 @@ func _on_Settingsbtn_pressed():
 	for c in _to_show_hide:
 		c.visible = false
 	_settings_dialog.show()
-	yield(_settings_dialog, "dismissed")
+	await _settings_dialog.dismissed
 	for c in _to_show_hide:
 		c.visible = true
 	_resume_btn.grab_focus()

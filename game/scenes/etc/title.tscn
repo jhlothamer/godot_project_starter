@@ -1,90 +1,82 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dmp1uu2qvevev"]
 
-[ext_resource path="res://scenes/etc/scene_background.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/etc/title.gd" type="Script" id=2]
-[ext_resource path="res://assets/themes/title_labels.tres" type="Theme" id=3]
-[ext_resource path="res://scenes/components/transition_button/transition_button.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/themes/global.tres" type="Theme" id=5]
+[ext_resource type="PackedScene" uid="uid://b20uyj2a7snys" path="res://scenes/etc/scene_background.tscn" id="1"]
+[ext_resource type="Script" path="res://scenes/etc/title.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bswc06g8au3yg" path="res://scenes/components/transition_button/transition_button.tscn" id="4"]
+[ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="5"]
 
 [node name="Title" type="Control"]
-self_modulate = Color( 0.34902, 0.160784, 0.619608, 1 )
+self_modulate = Color(0.34902, 0.160784, 0.619608, 1)
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 5 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5")
+script = ExtResource("2")
 
-[node name="Background" parent="." instance=ExtResource( 1 )]
+[node name="Background" parent="." instance=ExtResource("1")]
 
 [node name="TitleMarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
 anchor_right = 1.0
-margin_bottom = 127.0
-custom_constants/margin_top = 40
-custom_constants/margin_left = 40
+offset_bottom = 127.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
 
 [node name="TitleLbl" type="Label" parent="TitleMarginContainer"]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 1024.0
-margin_bottom = 127.0
-theme = ExtResource( 3 )
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 1152.0
+offset_bottom = 130.0
+theme_type_variation = &"TitleLabel"
 text = "Game Title"
-autowrap = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="ButtonsMarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -311.0
-margin_top = -328.0
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 40
+offset_left = -311.0
+offset_top = -328.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonsMarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 291.0
-margin_bottom = 288.0
+offset_right = 311.0
+offset_bottom = 328.0
 alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="NewGameBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_right = 271.0
-margin_bottom = 64.0
+[node name="NewGameBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource("4")]
+offset_top = 52.0
+offset_right = 311.0
+offset_bottom = 118.0
 text = "New Game"
 scene_to_load = "res://scenes/etc/how_to_play.tscn"
 grab_focus_on_start = true
 
-[node name="SettingsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 68.0
-margin_right = 271.0
-margin_bottom = 132.0
+[node name="SettingsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource("4")]
+offset_top = 122.0
+offset_right = 311.0
+offset_bottom = 188.0
 text = "Settings"
 scene_to_load = "res://scenes/etc/settings.tscn"
 
-[node name="CreditsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 136.0
-margin_right = 271.0
-margin_bottom = 200.0
+[node name="CreditsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource("4")]
+offset_top = 192.0
+offset_right = 311.0
+offset_bottom = 258.0
 text = "Credits"
 scene_to_load = "res://scenes/etc/credits.tscn"
 
 [node name="ExitBtn" type="Button" parent="ButtonsMarginContainer/VBoxContainer"]
-margin_top = 204.0
-margin_right = 271.0
-margin_bottom = 268.0
+offset_top = 262.0
+offset_right = 311.0
+offset_bottom = 328.0
 text = "Exit"
 flat = true
-align = 0
 
 [connection signal="pressed" from="ButtonsMarginContainer/VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_pressed"]

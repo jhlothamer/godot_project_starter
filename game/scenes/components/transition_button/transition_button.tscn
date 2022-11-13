@@ -1,13 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bswc06g8au3yg"]
 
-[ext_resource path="res://scenes/components/transition_button/transition_button.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://scenes/components/transition_button/transition_button.gd" id="2"]
 
 [node name="Button" type="Button"]
-margin_right = 12.0
-margin_bottom = 20.0
+offset_right = 12.0
+offset_bottom = 20.0
 text = "Button"
 flat = true
-align = 0
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[connection signal="pressed" from="." to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,5 +1,5 @@
 class_name InputRemapDialog
-extends WindowDialog
+extends Window
 
 
 const BINDINGS_TYPE_TO_MESSAGE_NAME := {
@@ -9,20 +9,20 @@ const BINDINGS_TYPE_TO_MESSAGE_NAME := {
 }
 
 
-onready var _label: Label = $MarginContainer/VBoxContainer/Label
+@onready var _label: Label = $MarginContainer/VBoxContainer/Label
 
 var _allowed_binding_types := []
 var _current_action: InputSettingsActionWrapper
 
 
 func _ready():
-	rect_size = rect_min_size
+	size = min_size
 
-func remap(action: InputSettingsActionWrapper) -> void:
+func remap_input(action: InputSettingsActionWrapper) -> void:
 	if visible:
 		return
 	_current_action = action
-	window_title = "Remap %s" % action.get_display_name()
+	title = "Remap %s" % action.get_display_name()
 	_allowed_binding_types = InputMapMgr.bindings_column_types[action.binding_index]
 	_init_label()
 	set_process_input(true)
@@ -48,7 +48,7 @@ func _input(event: InputEvent) -> void:
 	if !_allowed_binding_types.has(event_class):
 		return
 	_label.text = InputEventDisplayNameUtil.get_display_name(event)
-	yield(get_tree().create_timer(.5), "timeout")
+	await get_tree().create_timer(.5).timeout
 	if !visible:
 		return
 	_current_action.set_event_binding(event)

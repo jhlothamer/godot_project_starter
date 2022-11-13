@@ -1,5 +1,5 @@
 class_name InputSettingsActionWrapper
-extends Reference
+extends RefCounted
 
 var INVALID_ACTION_BINDING_THEME = preload("res://assets/themes/invalid_action_binding.tres")
 
@@ -9,7 +9,7 @@ var binding_index: int
 var remap_binding_button: Button
 
 
-func _init(action: InputSettingsAction, var binding, remap_button) -> void:
+func _init(action: InputSettingsAction,binding,remap_button):
 	input_settings_action = action
 	binding_index = binding
 	remap_binding_button = remap_button

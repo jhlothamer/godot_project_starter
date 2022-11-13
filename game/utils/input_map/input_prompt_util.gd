@@ -2,9 +2,9 @@ class_name InputPromptUtil
 extends Object
 
 const PROMPT_REGEX = "%%prompt:(?<input_type>\\w+):(?<action_name>\\w+)%%"
-const KEY_MOUSE_PROMPT_IMAGE_FILE_PATH = "res://assets/images/ui/input_prompts/xelu_free_keyboardcontroller_prompts_pack/Keyboard & Mouse/Light/%s_Key_Light.png"
+const KEY_MOUSE_PROMPT_IMAGE_FILE_PATH = "res://assets/images/ui/input_prompts/xelu_free_keyboardcontroller_prompts_pack/Keyboard & Mouse/Light3D/%s_Key_Light.png"
 const PAD_PROMPT_IMAGE_FILE_PATH = "res://assets/images/ui/input_prompts/xelu_free_keyboardcontroller_prompts_pack/Others/Xbox 360/360_%s.png"
-const SMALL_KEY_MOUSE_PROMPT_IMAGE_FILE_PATH = "res://assets/images/ui/input_prompts/xelu_free_keyboardcontroller_prompts_pack/Keyboard & Mouse/Light/small_%s_Key_Light.png"
+const SMALL_KEY_MOUSE_PROMPT_IMAGE_FILE_PATH = "res://assets/images/ui/input_prompts/xelu_free_keyboardcontroller_prompts_pack/Keyboard & Mouse/Light3D/small_%s_Key_Light.png"
 const SMALL_PAD_PROMPT_IMAGE_FILE_PATH = "res://assets/images/ui/input_prompts/xelu_free_keyboardcontroller_prompts_pack/Others/Xbox 360/small_360_%s.png"
 
 const JOY_BUTTON_IMG_SUFIX := [
@@ -44,7 +44,7 @@ const KEY_IMG_FILE_SUFFIXES := {
 	KEY_APOSTROPHE: "Quote",
 	KEY_COMMA: "Mark_Left",
 	KEY_PERIOD: "Mark_Right",
-	KEY_CONTROL: "Ctrl",
+	KEY_CTRL: "Ctrl",
 	KEY_PAGEUP: "Page_Up",
 	KEY_DELETE: "Del",
 	KEY_PAGEDOWN: "Page_Down",
@@ -84,7 +84,7 @@ static func replace_input_prompts(s: String, small: bool = false) -> String:
 		if input_event == null:
 			continue
 		var image_path := get_input_event_image_file_path(input_event, small)
-		if !image_path.empty():
+		if !image_path.is_empty():
 			s = s.replace(m.strings[0], "[img]%s[/img]" % image_path)
 			continue
 		var display_text = InputEventDisplayNameUtil.get_display_name(input_event)
@@ -93,7 +93,7 @@ static func replace_input_prompts(s: String, small: bool = false) -> String:
 	return s
 
 static func _get_action_input(input_type: String, action_name: String) -> InputEvent:
-	for a in InputMap.get_action_list(action_name):
+	for a in InputMap.action_get_events(action_name):
 		if a is InputEventKey and input_type == "key":
 			return a
 		if a is InputEventJoypadButton and input_type == "pad":
@@ -117,12 +117,12 @@ static func get_input_event_image_file_path(input_event: InputEvent, small: bool
 
 
 static func _get_input_event_image_file_path_key(ek: InputEventKey, small: bool) -> String:
-	var s = OS.get_scancode_string(ek.get_physical_scancode_with_modifiers()) if ek.scancode == 0 else OS.get_scancode_string(ek.get_scancode_with_modifiers())
+	var s = OS.get_keycode_string(ek.get_physical_keycode_with_modifiers()) if ek.keycode == 0 else OS.get_keycode_string(ek.get_keycode_with_modifiers())
 	var img_path = KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % s if !small else SMALL_KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % s
 	if ResourceLoader.exists(img_path):
 		return img_path
-	if KEY_IMG_FILE_SUFFIXES.has(ek.scancode):
-		img_path = KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % KEY_IMG_FILE_SUFFIXES[ek.scancode]
+	if KEY_IMG_FILE_SUFFIXES.has(ek.keycode):
+		img_path = KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % KEY_IMG_FILE_SUFFIXES[ek.keycode]
 		if ResourceLoader.exists(img_path):
 			return img_path
 	#return InputEventDisplayNameUtil.get_display_name(ek)
@@ -130,11 +130,11 @@ static func _get_input_event_image_file_path_key(ek: InputEventKey, small: bool)
 
 static func _get_input_event_image_file_path_mouse(emb: InputEventMouseButton, small: bool) -> String:
 	match emb.button_index:
-		BUTTON_LEFT:
+		MOUSE_BUTTON_LEFT:
 			return KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % "Mouse_Left" if !small else SMALL_KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % "Mouse_Left"
-		BUTTON_RIGHT:
+		MOUSE_BUTTON_RIGHT:
 			return KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % "Mouse_Right" if !small else SMALL_KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % "Mouse_Right"
-		BUTTON_MIDDLE:
+		MOUSE_BUTTON_MIDDLE:
 			return KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % "Mouse_Middle" if !small else SMALL_KEY_MOUSE_PROMPT_IMAGE_FILE_PATH % "Mouse_Middle"
 	return ""
 

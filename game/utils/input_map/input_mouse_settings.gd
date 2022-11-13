@@ -1,5 +1,5 @@
 class_name InputMouseSettings
-extends Reference
+extends RefCounted
 
 var show := false
 var invert_y := false
@@ -9,8 +9,8 @@ var sensitivity_max := .5
 var sensitivity := 1.0
 var default_sensitivity := 1.0
 
-func _init(data: Dictionary) -> void:
-	if data.empty():
+func _init(data: Dictionary):
+	if data.is_empty():
 		return
 	show = data["show"]
 	default_invert_y = data["default_invert_y"]

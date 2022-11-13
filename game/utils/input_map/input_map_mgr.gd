@@ -28,22 +28,21 @@ func _ready():
 
 func _read_settings_cfg(settings_data:Dictionary) -> void:
 	_settings = []
-	var f = File.new()
-	if !f.file_exists(INPUT_MAP_SETTING_CFG_FILE_PATH):
+	if !FileAccess.file_exists(INPUT_MAP_SETTING_CFG_FILE_PATH):
 		printerr("InputMapMgr: Missing config file: %s" % INPUT_MAP_SETTING_CFG_FILE_PATH)
 		return
-	if OK != f.open(INPUT_MAP_SETTING_CFG_FILE_PATH,File.READ):
+	var f := FileAccess.open(INPUT_MAP_SETTING_CFG_FILE_PATH,FileAccess.READ)
+	if !f:
 		printerr("InputMapMgr: could not open config file")
 		return
 	var cfg_text = f.get_as_text()
-	f.close()
 
-	var results := JSON.parse(cfg_text)
-	if results.error!= OK:
-		printerr("InputMapMgr: could not parse config file: %s" % results.error_string)
+	var test_json_conv = JSON.new()
+	if OK != test_json_conv.parse(cfg_text):
+		printerr("InputMapMgr: could not parse config file: %s" % test_json_conv.get_error_message())
 		return
 
-	var cfg_data = results.result
+	var cfg_data = test_json_conv.data
 
 	_settings_save_file_path = cfg_data["settings_save_file_path"]
 	bindings_per_action = cfg_data["bindings_per_action"]
@@ -81,19 +80,16 @@ func _interpret_bindings_column_types(type_string_array: Array) -> void:
 
 
 func _read_input_map_settings() -> Dictionary:
-	var f = File.new()
-	if !f.file_exists(_settings_save_file_path):
+	if !FileAccess.file_exists(_settings_save_file_path):
 		return {}
-	f.open(_settings_save_file_path, File.READ)
+	var f = FileAccess.open(_settings_save_file_path, FileAccess.READ)
 	var settings_text = f.get_as_text()
-	var results := JSON.parse(settings_text)
-	if results.error != OK:
-		printerr("InputMapMgr: could not parse config file: %s" % results.error_string)
-		f.close()
+	var test_json_conv = JSON.new()
+	if OK != test_json_conv.parse(settings_text):
+		printerr("InputMapMgr: could not parse config file: %s" % test_json_conv.get_error_message())
 		return {}
 	
-	var settings_data: Dictionary = results.result
-	f.close()
+	var settings_data: Dictionary = test_json_conv.data
 	return settings_data
 
 	
@@ -115,7 +111,6 @@ func save_and_apply(actions: Array, mouse_settings: InputMouseSettings) -> bool:
 
 	_mouse_settings.invert_y = mouse_settings.invert_y
 	_mouse_settings.sensitivity = mouse_settings.sensitivity
-
 	emit_signal("input_settings_updated")
 
 	var data := {}
@@ -126,15 +121,14 @@ func save_and_apply(actions: Array, mouse_settings: InputMouseSettings) -> bool:
 		if action._export_data:
 			data[action.action_name] = InputEventUtil.serialize_input_events(action._current_events)
 	
-	var f := File.new()
-	if OK != f.open(_settings_save_file_path, File.WRITE_READ):
+	var f = FileAccess.open(_settings_save_file_path, FileAccess.WRITE_READ)
+	if !f:
 		printerr("InputMapMgr: Could not save settings file!!")
 		return false
 	
-	var data_string = JSON.print(data, "\t")
+	var data_string = JSON.stringify(data, "\t")
 	
 	f.store_string(data_string)
-	f.close()
 	
 	# refresh data completely - in case player reset to default
 	_read_settings_cfg(_read_input_map_settings())
@@ -177,7 +171,7 @@ func get_invalid_input_settings_actions(all_actions: Array) -> Array:
 func _event_to_key_string(event: InputEvent) -> String:
 	if event is InputEventKey:
 		var e: InputEventKey = event
-		var code = e.scancode if e.scancode > 0 else e.physical_scancode
+		var code = e.keycode if e.keycode > 0 else e.physical_keycode
 		return "key:%d" % [code]
 	if event is InputEventMouseButton:
 		var e: InputEventMouseButton = event

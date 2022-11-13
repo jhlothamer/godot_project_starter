@@ -1,5 +1,5 @@
 class_name InputSettingsAction
-extends Reference
+extends RefCounted
 
 
 var action_name := ""
@@ -10,7 +10,7 @@ var _applied := true
 var _export_data := false
 
 
-func _init(an: String, dn: String, for_dup: bool = false) -> void:
+func _init(an: String,dn: String,for_dup: bool = false):
 	action_name = an
 	display_name = dn
 	if for_dup:
@@ -56,6 +56,6 @@ func has_default_key_binding(key: int) -> bool:
 	for e in _default_events:
 		if e is InputEventKey:
 			var ek: InputEventKey = e
-			if ek.scancode == key or ek.physical_scancode == key:
+			if ek.keycode == key or ek.physical_keycode == key:
 				return true
 	return false

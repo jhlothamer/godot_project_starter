@@ -1,7 +1,7 @@
 extends Node
 
-onready var _user_data_dir := OS.get_user_data_dir()
-onready var _path_separator:= "\\" if _user_data_dir.find("\\") > -1 else "/"
+@onready var _user_data_dir := OS.get_user_data_dir()
+@onready var _path_separator:= "\\" if _user_data_dir.find("\\") > -1 else "/"
 
 
 var _screenshot_max := 1000
@@ -10,7 +10,7 @@ var _screenshot_action_name := "toggle_screenshots"
 var _frame_delay := 0.2
 var _directory_name := ""
 var _file_counter := 0
-var _user_data_directory := Directory.new()
+var _user_data_directory :DirAccess
 var _threads := []
 var _time_since_last_frame := 0.0
 var _stopwatch := Stopwatch.new()
@@ -21,7 +21,8 @@ func _ready():
 		queue_free()
 		return
 	set_physics_process(false)
-	if OK != _user_data_directory.open("user://"):
+	_user_data_directory = DirAccess.open("user://")
+	if !_user_data_directory:
 		printerr("ScreenshotMgr: could not open user data directory")
 	_init_settings()
 
@@ -67,7 +68,7 @@ func _input(event):
 
 func get_date_time_string():
 	# year, month, day, weekday, dst (daylight savings time), hour, minute, second.
-	var datetime = OS.get_datetime()
+	var datetime = Time.get_datetime_dict_from_system()
 	return "%d%02d%02d_%02d%02d%02d" % [datetime["year"], datetime["month"], datetime["day"], datetime["hour"], datetime["minute"], datetime["second"]]
 
 
@@ -89,7 +90,7 @@ func _physics_process(delta):
 	var image = get_viewport().get_texture().get_data()
 	var thread := Thread.new()
 	_threads.append(thread)
-	if OK != thread.start(self, "_save_image", [image, thread]):
+	if OK != thread.start(Callable(self,"_save_image").bind([image, thread])):
 		printerr("ScreenshotMgr: could not start thread to complete saving of screenshot image.")
 	_file_counter += 1
 

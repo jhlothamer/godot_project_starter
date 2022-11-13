@@ -45,7 +45,7 @@ const JOY_BUTTON_TEXT := [
 static func get_display_name(event: InputEvent) -> String:
 	if event is InputEventKey:
 		var ek := event as InputEventKey
-		var s = OS.get_scancode_string(ek.get_physical_scancode_with_modifiers()) if ek.scancode == 0 else OS.get_scancode_string(ek.get_scancode_with_modifiers())
+		var s = OS.get_keycode_string(ek.get_physical_keycode_with_modifiers()) if ek.keycode == 0 else OS.get_keycode_string(ek.get_keycode_with_modifiers())
 		return s
 	elif event is InputEventMouseButton:
 		var mb: InputEventMouseButton = event

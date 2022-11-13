@@ -1,11 +1,11 @@
 extends VBoxContainer
 
-onready var _bus_controls := {
+@onready var _bus_controls := {
 	"Master": [$HBoxContainer/GridContainer/MasterVolumeLabel, $HBoxContainer/GridContainer/MasterVolumeHSlider],
 	"Music": [$HBoxContainer/GridContainer/MusicVolumeLabel, $HBoxContainer/GridContainer/MusicVolumeHSlider],
 	"SoundFx": [$HBoxContainer/GridContainer/SoundFxVolumeLabel, $HBoxContainer/GridContainer/SoundFxVolumeHSlider],
 }
-onready var _update_volume_sound: AudioStreamPlayer = $UpdateVolumeSound
+@onready var _update_volume_sound: AudioStreamPlayer = $UpdateVolumeSound
 
 
 func _ready():
@@ -22,8 +22,8 @@ func init() -> void:
 			continue
 		var slider:HSlider = _bus_controls[bus_name][1]
 		slider.value = AudioServer.get_bus_volume_db(bus_index)
-		if !slider.is_connected("value_changed", self, "_on_volume_slider_value_changed"):
-			if OK != slider.connect("value_changed", self, "_on_volume_slider_value_changed", [bus_index]):
+		if !slider.is_connected("value_changed",Callable(self,"_on_volume_slider_value_changed")):
+			if OK != slider.connect("value_changed",Callable(self,"_on_volume_slider_value_changed").bind(bus_index)):
 				printerr("VolumeSettingsUI: couldn't connect to volume slider value_changed signal!!")
 
 

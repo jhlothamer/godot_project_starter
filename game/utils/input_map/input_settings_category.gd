@@ -1,5 +1,5 @@
 class_name InputSettingsCategory
-extends Reference
+extends RefCounted
 
 
 var name := ""
