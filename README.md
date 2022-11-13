@@ -1,4 +1,5 @@
-# Godot Project Starter
+looking for a Godot 4 version?  Please see the godot4 branch.
+# Godot 3.x Project Starter
 This is a starter project for Godot Engine 3.x. To use simply clone or download this repository. Then copy the "game" folder to another location and rename it. You'll then be able to open the copied project in Godot and start updating.
 
 ## Why use a Project Starter?
