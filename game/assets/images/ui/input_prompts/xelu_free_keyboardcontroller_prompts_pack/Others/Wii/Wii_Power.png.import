@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Wii_Power.png-97c1069d979d8a7539a9d37f1e4c9c3
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

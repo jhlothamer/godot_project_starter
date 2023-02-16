@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Ouya_L1.png-636f95b017fd361eb4651313e37dcdf8.
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

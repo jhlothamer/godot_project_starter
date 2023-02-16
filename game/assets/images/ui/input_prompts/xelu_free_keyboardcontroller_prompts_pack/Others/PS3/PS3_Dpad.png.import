@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/PS3_Dpad.png-8a89afb06cfac5897c31d1bb0bc3a56c
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

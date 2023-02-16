@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Blank_White_Normal.png-1eeebb6cb1d2a179bae88b
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

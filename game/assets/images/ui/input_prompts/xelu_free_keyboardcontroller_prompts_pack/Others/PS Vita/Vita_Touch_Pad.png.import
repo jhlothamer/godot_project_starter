@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Vita_Touch_Pad.png-c6284bc54e45aa886dadbaf238
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/360_Dpad.png-cf0fa1ce5d570e85381946fb1ef21f60
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

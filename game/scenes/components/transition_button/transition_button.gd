@@ -4,7 +4,7 @@ extends Button
 signal about_to_transition()
 
 
-@export_file("*.tscn,*.scn,*.res") var scene_to_load := ""
+@export_file("*.tscn","*.scn","*.res") var scene_to_load := ""
 @export var transition_speed_seconds := -1.0
 @export var fade_sound := false
 @export var grab_focus_on_start := false

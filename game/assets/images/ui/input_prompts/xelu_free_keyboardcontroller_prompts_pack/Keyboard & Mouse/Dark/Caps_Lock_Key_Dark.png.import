@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Caps_Lock_Key_Dark.png-36bfa9415c010723f90581
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

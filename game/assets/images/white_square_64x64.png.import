@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/white_square_64x64.png-49740abe7f6abcbf1fa64d
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

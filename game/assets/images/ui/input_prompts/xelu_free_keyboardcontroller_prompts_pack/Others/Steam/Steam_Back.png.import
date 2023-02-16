@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Steam_Back.png-6d467c355a6b6ba9f3c5b6256432e5
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

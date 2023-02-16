@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Steam_Y.png-553bd2ec127e78c9c5f3a616849d2f68.
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

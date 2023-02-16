@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/XboxOne_Dpad.png-5646eee216efc19c24dddd4958bc
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -38,8 +38,10 @@ func _read_settings_cfg(settings_data:Dictionary) -> void:
 	var cfg_text = f.get_as_text()
 
 	var test_json_conv = JSON.new()
+	#var result = test_json_conv.parse(cfg_text)
 	if OK != test_json_conv.parse(cfg_text):
-		printerr("InputMapMgr: could not parse config file: %s" % test_json_conv.get_error_message())
+		printerr("InputMapMgr: could not parse config file: line:%i, error: '%s'" % [test_json_conv.get_error_line(), test_json_conv.get_error_message()])
+		#printerr("InputMapMgr: could not parse config file: error=%i, error: '%s'" % [result, test_json_conv.get_error_message()])
 		return
 
 	var cfg_data = test_json_conv.data
@@ -85,8 +87,9 @@ func _read_input_map_settings() -> Dictionary:
 	var f = FileAccess.open(_settings_save_file_path, FileAccess.READ)
 	var settings_text = f.get_as_text()
 	var test_json_conv = JSON.new()
-	if OK != test_json_conv.parse(settings_text):
-		printerr("InputMapMgr: could not parse config file: %s" % test_json_conv.get_error_message())
+	var result = test_json_conv.parse(settings_text)
+	if OK != result:
+		printerr("InputMapMgr: could not parse config file: error=%d, %s" % [result, test_json_conv.get_error_message()])
 		return {}
 	
 	var settings_data: Dictionary = test_json_conv.data
@@ -120,7 +123,17 @@ func save_and_apply(actions: Array, mouse_settings: InputMouseSettings) -> bool:
 	for action in actions:
 		if action._export_data:
 			data[action.action_name] = InputEventUtil.serialize_input_events(action._current_events)
+
+	if !_save(data):
+		return false
 	
+	# refresh data completely - in case player reset to default
+	_read_settings_cfg(_read_input_map_settings())
+	
+	
+	return true
+
+func _save(data: Dictionary) -> bool:
 	var f = FileAccess.open(_settings_save_file_path, FileAccess.WRITE_READ)
 	if !f:
 		printerr("InputMapMgr: Could not save settings file!!")
@@ -129,11 +142,6 @@ func save_and_apply(actions: Array, mouse_settings: InputMouseSettings) -> bool:
 	var data_string = JSON.stringify(data, "\t")
 	
 	f.store_string(data_string)
-	
-	# refresh data completely - in case player reset to default
-	_read_settings_cfg(_read_input_map_settings())
-	
-	
 	return true
 
 

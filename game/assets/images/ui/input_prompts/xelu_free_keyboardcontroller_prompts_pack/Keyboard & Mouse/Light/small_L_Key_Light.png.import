@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/small_L_Key_Light.png-fc98d81d676c2eff26c89d5
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

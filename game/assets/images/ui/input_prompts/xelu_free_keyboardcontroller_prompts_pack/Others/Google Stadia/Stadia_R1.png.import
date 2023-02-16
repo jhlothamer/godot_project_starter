@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Stadia_R1.png-f774814f1d65fb06e3b51e3f3601ef4
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

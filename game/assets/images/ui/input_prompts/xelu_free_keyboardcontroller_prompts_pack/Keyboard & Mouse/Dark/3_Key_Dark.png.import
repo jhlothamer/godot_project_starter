@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/3_Key_Dark.png-1d225f177d0b67883afebfa387a351
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

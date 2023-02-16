@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/WiiU_Look_Up.png-fbbb8f5d44f922d538ada6c1060d
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

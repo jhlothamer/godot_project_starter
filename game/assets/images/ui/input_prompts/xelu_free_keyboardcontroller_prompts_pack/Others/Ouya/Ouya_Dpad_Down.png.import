@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Ouya_Dpad_Down.png-606bb587cb9e0901b3b44071fb
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
