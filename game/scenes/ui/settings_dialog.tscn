@@ -16,11 +16,13 @@ theme = ExtResource("2")
 script = ExtResource("8")
 
 [node name="DialogBackground" parent="." instance=ExtResource("7")]
+layout_mode = 0
+anchors_preset = 0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -31,80 +33,55 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-offset_left = 40.0
-offset_top = 20.0
-offset_right = 1112.0
-offset_bottom = 628.0
+layout_mode = 2
 
 [node name="HeaderHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_right = 1072.0
-offset_bottom = 90.0
+layout_mode = 2
 
 [node name="SettingsLbl" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
-offset_right = 296.0
-offset_bottom = 90.0
+layout_mode = 2
 theme_type_variation = &"TitleLabel"
 text = "Settings"
 
 [node name="ValidationMessageLbl" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
-offset_left = 300.0
-offset_top = 32.0
-offset_right = 1072.0
-offset_bottom = 57.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SettingsUI" parent="MarginContainer/VBoxContainer" instance=ExtResource("5")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 94.0
-offset_right = 1072.0
-offset_bottom = 538.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 542.0
-offset_right = 1072.0
-offset_bottom = 608.0
+layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 2
 
 [node name="ResetBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-offset_right = 141.0
-offset_bottom = 66.0
+layout_mode = 2
 text = "Reset"
 flat = true
 
 [node name="HelpMessageContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-offset_left = 181.0
-offset_right = 745.0
-offset_bottom = 66.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HelpMessageLbl" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/HelpMessageContainer"]
-offset_right = 564.0
-offset_bottom = 66.0
+layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-fit_content_height = true
 
 [node name="CancelBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-offset_left = 785.0
-offset_right = 953.0
-offset_bottom = 66.0
+layout_mode = 2
 text = "Cancel"
 flat = true
 
 [node name="OKBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-offset_left = 993.0
-offset_right = 1072.0
-offset_bottom = 66.0
+layout_mode = 2
 text = "OK"
 flat = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="help_message_changed" from="MarginContainer/VBoxContainer/SettingsUI" to="." method="_on_SettingsUI_help_message_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelBtn" to="." method="_on_CancelBtn_pressed"]

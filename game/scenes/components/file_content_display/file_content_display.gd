@@ -11,5 +11,4 @@ func readFile():
 	if !FileAccess.file_exists(file_path):
 		return "file does not exist: '%s'" % file_path
 	var f = FileAccess.open(file_path, FileAccess.READ)
-	var text = f.get_as_text()
-	return text
+	return f.get_as_text()

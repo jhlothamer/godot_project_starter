@@ -28,12 +28,6 @@ func _on_SettingsUI_help_message_changed(message: String) -> void:
 	_help_msg_lbl.text = "[center]%s[/center]" % message
 
 
-func show():
-	get_tree().paused = true
-	_settings_ui.re_init()
-	super.show()
-
-
 func _on_CancelBtn_pressed():
 	_settings_ui.cancel()
 	hide()
@@ -44,4 +38,13 @@ func _on_OKBtn_pressed():
 		return
 	hide()
 	emit_signal("dismissed")
+
+
+
+func _on_visibility_changed():
+	if !visible:
+		return
+	get_tree().paused = true
+	_settings_ui.re_init()
+
 
