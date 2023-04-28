@@ -59,7 +59,7 @@ process_mode = 3
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(1920, 1080)
+custom_minimum_size = Vector2(3840, 2160)
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
