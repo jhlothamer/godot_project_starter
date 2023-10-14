@@ -17,6 +17,8 @@ mouse_filter = 2
 
 [node name="PauseDialog" parent="Dialogs" instance=ExtResource("1")]
 visible = false
+layout_mode = 1
 
 [node name="GameOverDialog" parent="Dialogs" instance=ExtResource("2")]
 visible = false
+layout_mode = 1

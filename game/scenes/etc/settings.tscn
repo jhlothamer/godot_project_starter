@@ -34,87 +34,50 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_left = 40.0
-offset_top = 20.0
-offset_right = 1112.0
-offset_bottom = 628.0
 
 [node name="HeaderHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_right = 1072.0
-offset_bottom = 90.0
 
 [node name="SettingsLbl" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
 layout_mode = 2
-offset_right = 296.0
-offset_bottom = 90.0
 theme_override_font_sizes/font_size = 72
 text = "Settings"
 
 [node name="ValidationMessageLbl" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
 layout_mode = 2
-offset_left = 300.0
-offset_top = 32.0
-offset_right = 1072.0
-offset_bottom = 57.0
 size_flags_horizontal = 3
 
 [node name="SettingsUI" parent="MarginContainer/VBoxContainer" instance=ExtResource("5")]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 94.0
-offset_right = 1072.0
-offset_bottom = 538.0
-grow_horizontal = 1
-grow_vertical = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_top = 542.0
-offset_right = 1072.0
-offset_bottom = 608.0
 theme_override_constants/separation = 40
 alignment = 2
 
 [node name="ResetBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-offset_right = 141.0
-offset_bottom = 66.0
 text = "Reset"
 flat = true
 
 [node name="HelpMessageContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 181.0
-offset_right = 745.0
-offset_bottom = 66.0
 size_flags_horizontal = 3
 
 [node name="HelpMessageLbl" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/HelpMessageContainer"]
 layout_mode = 2
-offset_right = 564.0
-offset_bottom = 66.0
 size_flags_horizontal = 3
 bbcode_enabled = true
-fit_content_height = true
 
 [node name="CancelBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6")]
 layout_mode = 2
-offset_left = 785.0
-offset_right = 953.0
-offset_bottom = 66.0
 text = "Cancel"
 scene_to_load = "res://scenes/etc/title.tscn"
 
 [node name="OKBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6")]
 layout_mode = 2
-offset_left = 993.0
-offset_right = 1072.0
-offset_bottom = 66.0
 text = "OK"
 script = ExtResource("7")
 saving_node = NodePath("../../../..")

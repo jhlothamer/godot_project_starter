@@ -5,7 +5,7 @@ extends Control
 
 func _ready():
 	_title_lbl.text = ProjectSettings.get_setting("application/config/name")
-	if OS.get_name() == "HTML5":
+	if OS.get_name() == "Web":
 		_exit_btn.visible = false
 
 
