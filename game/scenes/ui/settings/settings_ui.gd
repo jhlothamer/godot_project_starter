@@ -27,6 +27,8 @@ func _on_Tabs_tab_changed(tab: int) -> void:
 		_tab_panels[i].visible = i == tab
 		if tab == i:
 			var _discard = _set_focus(_tab_panels[i])
+			if _settings_ui[i].has_method("on_focus_set"):
+				_settings_ui[i].on_focus_set()
 
 
 func _on_PreviousTabBtn_pressed():
@@ -117,9 +119,9 @@ func _on_joy_connection_changed(device: int, connected: bool) -> void:
 	if _game_pad_device_id != device:
 		return
 	if !connected:
-		emit_signal("help_message_changed", "")
+		help_message_changed.emit("")
 		return
-	emit_signal("help_message_changed", InputPromptUtil.replace_input_prompts(HELP_MESSAGE, true))
+	help_message_changed.emit(InputPromptUtil.replace_input_prompts(HELP_MESSAGE, true))
 
 func re_init() -> void:
 	_tabs.current_tab = 0

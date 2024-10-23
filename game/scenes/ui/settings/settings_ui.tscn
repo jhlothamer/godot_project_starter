@@ -15,27 +15,22 @@ theme = ExtResource("1")
 script = ExtResource("2")
 
 [node name="TabContainer" type="HBoxContainer" parent="."]
-offset_right = 1152.0
+layout_mode = 2
 
 [node name="TabBar" type="TabBar" parent="TabContainer"]
-offset_right = 1152.0
+layout_mode = 2
 size_flags_horizontal = 3
 tab_alignment = 1
 
 [node name="TabPanelContainer" type="PanelContainer" parent="."]
-offset_top = 4.0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Volume" type="Panel" parent="TabPanelContainer"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 1142.0
-offset_bottom = 634.0
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabPanelContainer/Volume"]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -46,24 +41,14 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="VolumeSettingsUI" parent="TabPanelContainer/Volume/MarginContainer" instance=ExtResource("3")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 1112.0
-offset_bottom = 604.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="Controls" type="Panel" parent="TabPanelContainer"]
 visible = false
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 1017.0
-offset_bottom = 521.0
+layout_mode = 2
 
 [node name="ControlSettingsUI" parent="TabPanelContainer/Controls" instance=ExtResource("4")]
+layout_mode = 1
 
 [connection signal="tab_changed" from="TabContainer/TabBar" to="." method="_on_Tabs_tab_changed"]
 [connection signal="remap_ended" from="TabPanelContainer/Controls/ControlSettingsUI" to="." method="_on_ControlSettings_remap_ended"]

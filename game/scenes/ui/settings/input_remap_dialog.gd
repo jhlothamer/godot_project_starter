@@ -3,15 +3,15 @@ extends Window
 
 
 const BINDINGS_TYPE_TO_MESSAGE_NAME := {
-	"InputEventKey": "Key",
-	"InputEventJoypadButton": "Gamepad Button",
-	"InputEventMouseButton": "Mouse Button",
+	InputMapBindingColumnCfg.BindingColumnTypes.KeyBoard: "Key",
+	InputMapBindingColumnCfg.BindingColumnTypes.Mouse: "Mouse Button",
+	InputMapBindingColumnCfg.BindingColumnTypes.GamePad: "Gamepad Button",
 }
 
 
 @onready var _label: Label = $MarginContainer/VBoxContainer/Label
 
-var _allowed_binding_types := []
+var _binding_column:InputMapBindingColumnCfg
 var _current_action: InputSettingsActionWrapper
 
 
@@ -23,29 +23,25 @@ func remap_input(action: InputSettingsActionWrapper) -> void:
 		return
 	_current_action = action
 	title = "Remap %s" % action.get_display_name()
-	_allowed_binding_types = InputMapMgr.bindings_column_types[action.binding_index]
-	_init_label()
+	_binding_column = InputMapMgr.settings_config.binding_columns[action.binding_index]
+	_init_label(InputMapMgr.settings_config.binding_columns[action.binding_index].binding_types)
 	set_process_input(true)
 	popup_centered()
 
 
-func _init_label() -> void:
-	var msg := "Press "
-	var types_count = _allowed_binding_types.size()
-	for i in types_count:
-		if i > 0 and i == types_count - 1:
-			msg += " or "
-		elif i > 0:
-			msg += ", "
-		msg += BINDINGS_TYPE_TO_MESSAGE_NAME[_allowed_binding_types[i]]
-	_label.text = msg
+func _init_label(binding_column_types:InputMapBindingColumnCfg.BindingColumnTypes) -> void:
+	var binding_type_label_text:Array[String]
+	for binding_type:InputMapBindingColumnCfg.BindingColumnTypes in BINDINGS_TYPE_TO_MESSAGE_NAME.keys():
+		if binding_type & binding_column_types > 0: binding_type_label_text.append(BINDINGS_TYPE_TO_MESSAGE_NAME[binding_type])
+	
+	_label.text = "Press %s" % " or ".join(binding_type_label_text).strip_edges()
 
 
 func _input(event: InputEvent) -> void:
 	if !event.is_pressed():
 		return
 	var event_class:String = event.get_class()
-	if !_allowed_binding_types.has(event_class):
+	if !_binding_column.is_valid_input_type(event_class):
 		return
 	_label.text = InputEventDisplayNameUtil.get_display_name(event)
 	await get_tree().create_timer(.5).timeout
@@ -61,4 +57,8 @@ func _on_InputRemapDialog_popup_hide():
 
 
 func _on_CancelBtn_pressed():
+	hide()
+
+
+func _on_close_requested() -> void:
 	hide()

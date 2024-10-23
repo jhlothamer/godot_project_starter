@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bk6r7p1kd5oja" path="res://assets/images/white_square_64x64.png" id="1"]
 
 [node name="Background" type="TextureRect"]
-self_modulate = Color(0.34902, 0.160784, 0.619608, 1)
+self_modulate = Color(0.1375, 0.1375, 0.1375, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -16,8 +16,7 @@ theme = ExtResource("2")
 script = ExtResource("8")
 
 [node name="DialogBackground" parent="." instance=ExtResource("7")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
 grow_horizontal = 2
 grow_vertical = 2
 

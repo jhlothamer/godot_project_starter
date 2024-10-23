@@ -1,15 +1,15 @@
 looking for a Godot 3 version?  Please see the master branch.
-# Godot 4.x Project Starter
-This is a starter project for Godot Engine 4.x. To use simply clone or download this repository. Then copy the "game" folder to another location and rename it. You'll then be able to open the copied project in Godot and start updating.
+# Godot 4.3 Project Starter
+This is a starter project for Godot Engine 4.3. To use simply clone or download this repository. Then copy the "game" folder to another location and rename it. You'll then be able to open the copied project in Godot and start updating.
 
 ## Why use a Project Starter?
 There are a few things every game should have, even a quick project hacked out during a game jam. Such things are
 
-- A title
-- Crediting your work and the works of others
+- A starting scene with the game's title
+- Credit for your work and the works of others
 - Instructions on how to play the game
 - Transition affects between scenes
-- A HUD (heads up display) with Pause, Game Over and Settings dialogs
+- Pause, Game Over and Settings dialogs
 
 All of this is somewhat configurable, but you can also completely modify the scenes if you want, or even replace them. But for a game jam, or a simple prototype build where you don't want or can't spend the time on such things, this project may be for you.
 
@@ -27,12 +27,12 @@ If you use this project starter then they are a few things you'll want to change
 2. Update the how_to_play.txt file (located at assets\data\how_to_play.txt)
 3. In the howToPlay scene, update the the PlayBtn control to refer to your game scene in it's Scene To Load property. By default this just sends the player back to the title scene.
 4. Update the credits.txt file (located at assets\data\credits.txt).
-5. Update the input_map_setting_cfg.json file so input actions can be rebound by the player. (located at assets\data\input_map_setting_cfg.json). Alternatively you can remove the Settings buttons found on the title and pause dialog scenes. See below for more details.
+5. Update the input_map_setting_cfg.tres resource so input actions can be rebound by the player. (located at assets\data\input_map_setting_cfg.tres). Alternatively you can remove the Settings buttons found on the title and pause dialog scenes. See below for more details.
 
 ## What's Configurable?
 
 ### Background of Title, Credit, How to Play Scenes
-These scenes all use another scene for their background/background color. It's called scene_background. It's located in the same folder these other scenes are (scenes/etc).
+These scenes all use another scene for their background/background color. It's called scene_background.tscn and is located in the same folder these other scenes are (scenes/etc).
 
 To change the background color of all these scenes, just modify the Self Modulate color on scene_background.
 
@@ -65,18 +65,15 @@ The project starter has 3 buses and therefore 3 separate settings for volume the
 Be sure to set the bus on AudioStreamPlayer nodes to the appropriate audio bus.
 
 #### Control Settings
-The project starter allows players to set input action event bindings. To set what can be bound update the input_map_setting_cfg.json file located in the assets/data folder.
+The project starter allows players to set input action event bindings. To set what can be bound update the input_map_setting_cfg.tres file located in the assets/data folder.
 
-#### input_map_setting_cfg.json
+#### input_map_setting_cfg.tres
 Hopefully most of the settings that can be configured are self-explanatory. But here are the following properties that can be set and what they do.
 
-- settings_save_file_path - where the player's settings are saved. This should be in the user:// folder.
-- bindings_per_action - how many event bindings can be set. Think of these as being "primary" (for right-handers), "secondary" (for left-handers) and "game pad" (if your game supports game pads)
-- binding_colum_names - these names are shown in the UI
-- binding_column_types - the types of events allowed for each binding. These types are "key" (keyboard button), "mouse" (mouse button) and "pad" (game pad button). To allow for more than one type for a binding column use the pipe character ("|") in between these types. E.g. "key|mouse" to allow for either key or mouse button events.
-- mouse_settings - this JSON object determines if mouse settings should be shown at all, min/max/default mouse sensitivity values and a default value for inverting the y mouse button.
-- categories - An array of objects that represent an input map category. Use these to group actions for "movement", "inventory", "weapons", etc.
-- - Each category has a name and an actions array, which contains objects with the action_name and display_name for the action. The action_name must match an action configured in your games input map.
+- Settings Save File Path - where the player's settings are saved. This should be in the user:// folder.
+- Binding Columns - key bindings are presented in a grid with each column tied to a type or types of input allowed plus a column name.  There are three columns by default called Primary, Secondary and Gamepad with the first two columns being for keyboard and mouse button input and the last for joypad.
+- mouse_settings - this determines if mouse settings should be shown at all, min/max/default mouse sensitivity values and a default value for inverting the y mouse button.
+- Input Map Categories - re-mappable input actions are organized into categories, with a Movement category added by default as an example.  For each input action you must supply it's action name (as listed in the Project Settings Input Map tab) and a display name.
 
 #### Player Settings Save Files
 The save files are all in JSON format and are formatted with indents to make them easier to read.
@@ -99,7 +96,7 @@ The buttons have a custom property called "Scene To Load". Just set this to the 
 The buttons use the transition manager (see below), which allows for a fade out/in affect when switching scenes. You can set the transition speed (in seconds) and whether the audio fades out/in. Note that a speed of zero or less will cause the default speed to be used. That speed is found in the Project Settings -> Globals -> Transition Mgr Default Speed.
 
 ## In Game Dialogs
-The in game dialogs (pause, game over, settings) are contained in a scene called a HUD. To include the dialogs in your game, just instance the hud scene into your game's scene.
+The in game dialogs (pause, game over, settings) are contained in a scene called a HUD. To include the dialogs in your game, just instance the hud.tscn scene into your game's scene.
 
 ### Pause Dialog
 The pause dialog is setup to automatically appear when the "pause" action is pressed. This action is set up in the Input Map in the Project Settings. Out of the box the pause dialog will popup when the escape key or start button on a game pad are pressed.

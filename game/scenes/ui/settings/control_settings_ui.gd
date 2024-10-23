@@ -3,17 +3,22 @@ extends ScrollContainer
 signal remap_started()
 signal remap_ended()
 
+
 const ACTION_BINDING_CATEGORY_UI = preload("res://scenes/ui/settings/action_binding_category_ui.tscn")
 
-@onready var _mouse_settings_ui = $ControlSettingsCategoryContainer/MouseSettingsUI
-@onready var _input_remap_dlg:InputRemapDialog = $ControlSettingsCategoryContainer/InputRemapDialog
-@onready var _action_binding_categories_container: VBoxContainer = $ControlSettingsCategoryContainer/ActionBindingCategoriesContainer
+
+@onready var _mouse_settings_ui = %MouseSettingsUI
+@onready var _input_remap_dlg:InputRemapDialog = %InputRemapDialog
+@onready var _action_binding_categories_container: VBoxContainer = %ActionBindingCategoriesContainer
+
 
 var _mouse_settings: InputMouseSettings
 var _input_settings_categories := []
 
+
 func _ready():
 	init()
+	set_deferred("scroll_vertical", 0)
 
 
 func init() -> void:
@@ -30,12 +35,13 @@ func init() -> void:
 		_action_binding_categories_container.add_child(category_ui)
 		category_ui.init(category, _input_remap_dlg)
 
+
 func _on_InputRemapDialog_about_to_show():
-	emit_signal("remap_started")
+	remap_started.emit()
 
 
 func _on_InputRemapDialog_popup_hide():
-	emit_signal("remap_ended")
+	remap_ended.emit()
 
 
 func validate() -> String:
@@ -65,16 +71,18 @@ func validate() -> String:
 
 
 func reset() -> void:
+	_mouse_settings_ui.reset()
 	for category_ui in _action_binding_categories_container.get_children():
 		category_ui.reset()
 
 
 func save() -> void:
-	var all_input_settings_actions := []
-	for i in _input_settings_categories:
-		var category: InputSettingsCategory = i
+	var all_input_settings_actions:Array[InputSettingsAction] = []
+	for category: InputSettingsCategory in _input_settings_categories:
 		all_input_settings_actions.append_array(category.actions)
 	
 	var _discard = InputMapMgr.save_and_apply(all_input_settings_actions, _mouse_settings)
 
 
+func on_focus_set() -> void:
+	scroll_vertical = 0

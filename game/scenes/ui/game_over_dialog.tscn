@@ -17,11 +17,12 @@ theme = ExtResource("5")
 script = ExtResource("4")
 
 [node name="DialogBackground" parent="." instance=ExtResource("3")]
+layout_mode = 1
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -34,20 +35,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-offset_right = 396.0
-offset_bottom = 90.0
+layout_mode = 2
 theme_type_variation = &"TitleLabel"
 text = "Game Over"
 
 [node name="RetryBtn" parent="VBoxContainer" instance=ExtResource("2")]
-offset_top = 94.0
-offset_right = 396.0
-offset_bottom = 160.0
+layout_mode = 2
 text = "Retry"
 
 [node name="MainMenuBtn" parent="VBoxContainer" instance=ExtResource("2")]
-offset_top = 164.0
-offset_right = 396.0
-offset_bottom = 230.0
+layout_mode = 2
 text = "Main Menu"
 scene_to_load = "res://scenes/etc/title.tscn"

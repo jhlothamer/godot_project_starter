@@ -1,4 +1,4 @@
-update res://assets/data/credits.txt
+Please update res://assets/data/credits.txt
 
 Art:
 "FREE Keyboard and controllers prompts pack" by xelu (https://opengameart.org/content/free-keyboard-and-controllers-prompts-pack) 
