@@ -6,7 +6,6 @@
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="5"]
 
 [node name="Title" type="Control"]
-self_modulate = Color(0.34902, 0.160784, 0.619608, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,6 +43,10 @@ offset_left = -311.0
 offset_top = -328.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonsMarginContainer"]
 layout_mode = 2
@@ -52,22 +55,26 @@ alignment = 2
 [node name="NewGameBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource("4")]
 layout_mode = 2
 text = "New Game"
+alignment = 0
 scene_to_load = "res://scenes/etc/how_to_play.tscn"
 grab_focus_on_start = true
 
 [node name="SettingsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource("4")]
 layout_mode = 2
 text = "Settings"
+alignment = 0
 scene_to_load = "res://scenes/etc/settings.tscn"
 
 [node name="CreditsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource("4")]
 layout_mode = 2
 text = "Credits"
+alignment = 0
 scene_to_load = "res://scenes/etc/credits.tscn"
 
 [node name="ExitBtn" type="Button" parent="ButtonsMarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 flat = true
+alignment = 0
 
 [connection signal="pressed" from="ButtonsMarginContainer/VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_pressed"]

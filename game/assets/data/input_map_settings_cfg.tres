@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="InputMapSettingsCfg" load_steps=15 format=3 uid="uid://hlir4wyfg6fw"]
+
+[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/input_map_binding_column_cfg.gd" id="1_6drfs"]
+[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/input_map_action_cfg.gd" id="1_rs3pr"]
+[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/input_map_settings_cfg.gd" id="1_wxvwk"]
+[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/input_map_category_cfg.gd" id="2_q42r0"]
+[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/Input_map_mouse_settings_cfg.gd" id="3_q8yt0"]
+
+[sub_resource type="Resource" id="Resource_vrdtq"]
+script = ExtResource("1_6drfs")
+name = "Primary"
+binding_types = 3
+
+[sub_resource type="Resource" id="Resource_aiiow"]
+script = ExtResource("1_6drfs")
+name = "Secondary"
+binding_types = 3
+
+[sub_resource type="Resource" id="Resource_kfpa5"]
+script = ExtResource("1_6drfs")
+name = "Game Pad"
+binding_types = 4
+
+[sub_resource type="Resource" id="Resource_ov3xi"]
+script = ExtResource("1_rs3pr")
+action_name = "move_up"
+display_name = "Up"
+
+[sub_resource type="Resource" id="Resource_4qmdg"]
+script = ExtResource("1_rs3pr")
+action_name = "move_down"
+display_name = "Down"
+
+[sub_resource type="Resource" id="Resource_sn55a"]
+script = ExtResource("1_rs3pr")
+action_name = "move_left"
+display_name = "Left"
+
+[sub_resource type="Resource" id="Resource_dq5yn"]
+script = ExtResource("1_rs3pr")
+action_name = "move_right"
+display_name = "Right"
+
+[sub_resource type="Resource" id="Resource_4pdro"]
+script = ExtResource("2_q42r0")
+cateogry_name = "Movement"
+actions = Array[ExtResource("1_rs3pr")]([SubResource("Resource_ov3xi"), SubResource("Resource_4qmdg"), SubResource("Resource_sn55a"), SubResource("Resource_dq5yn")])
+
+[sub_resource type="Resource" id="Resource_rpdqs"]
+script = ExtResource("3_q8yt0")
+show_mouse_settings = false
+default_invert_y = false
+sensitivity_min = 0.5
+sensitivity_max = 2.5
+sensitivity_default = 1.5
+
+[resource]
+script = ExtResource("1_wxvwk")
+settings_save_file_path = "user://input_map_settings.json"
+binding_columns = Array[ExtResource("1_6drfs")]([SubResource("Resource_vrdtq"), SubResource("Resource_aiiow"), SubResource("Resource_kfpa5")])
+mouse_settings = SubResource("Resource_rpdqs")
+input_map_categories = Array[ExtResource("2_q42r0")]([SubResource("Resource_4pdro")])

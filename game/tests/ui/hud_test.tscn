@@ -29,15 +29,10 @@ theme_override_constants/margin_left = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_left = 30.0
-offset_right = 711.0
-offset_bottom = 373.0
 theme_override_constants/separation = 30
 
 [node name="InstructionsLbl" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_right = 681.0
-offset_bottom = 112.0
 text = "To test the hud:
   Press escape key to bring up pause dialog
   Press button below to bring up game over
@@ -45,17 +40,11 @@ text = "To test the hud:
 
 [node name="SimulateGameOverBtn" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_top = 142.0
-offset_right = 681.0
-offset_bottom = 175.0
 theme_type_variation = &"SmallButton"
 text = "Simulate Game Over"
 
 [node name="HowToGameOverLbl" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_top = 205.0
-offset_right = 681.0
-offset_bottom = 373.0
 text = "Game Over dialog triggered by the game_over input action.  You can 
 induce this input event in code as follows:
      var a = InputEventAction.new()

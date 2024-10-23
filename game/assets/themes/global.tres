@@ -1,14 +1,20 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cg33m0umsdbg0"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cg33m0umsdbg0"]
 
 [ext_resource type="FontFile" path="res://assets/fonts/text.tres" id="1"]
 [ext_resource type="FontFile" path="res://assets/fonts/buttons.tres" id="2"]
+[ext_resource type="FontFile" uid="uid://bxkgquuwteomg" path="res://assets/fonts/title.tres" id="3_alykh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xjrt"]
+draw_center = false
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.341176, 0.341176, 0.341176, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [resource]
 Button/font_sizes/font_size = 48
@@ -24,3 +30,4 @@ TextEdit/font_sizes/font_size = 20
 TextEdit/fonts/font = ExtResource("1")
 TitleLabel/base_type = &"Label"
 TitleLabel/font_sizes/font_size = 72
+TitleLabel/fonts/font = ExtResource("3_alykh")

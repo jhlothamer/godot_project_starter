@@ -3,9 +3,11 @@ extends VBoxContainer
 @onready var _label:Label = $Label
 @onready var _grid: GridContainer = $HBoxContainer/GridContainer
 
+
 var _input_settings_category: InputSettingsCategory
 var _remap_dlg: InputRemapDialog
 var _input_settings_action_wrappers := []
+
 
 func init(input_settings_category: InputSettingsCategory, remap_dlg: InputRemapDialog) -> void:
 	_input_settings_category = input_settings_category
@@ -13,12 +15,13 @@ func init(input_settings_category: InputSettingsCategory, remap_dlg: InputRemapD
 	_label.text = input_settings_category.name
 	_fill_grid()
 
+
 func _fill_grid():
-	_grid.columns = InputMapMgr.bindings_per_action + 1
-	for i in InputMapMgr.bindings_per_action:
-		var column_header = InputMapMgr.bindings_column_names[i]
+	_grid.columns = InputMapMgr.settings_config.binding_columns.size() + 1
+	
+	for binding_column:InputMapBindingColumnCfg in InputMapMgr.settings_config.binding_columns:
 		var lbl := Label.new()
-		lbl.text = column_header
+		lbl.text = binding_column.name
 		_grid.add_child(lbl)
 	
 	for i in _input_settings_category.actions:

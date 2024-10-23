@@ -13,38 +13,26 @@ theme = ExtResource("1")
 script = ExtResource("2")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 1152.0
-offset_bottom = 25.0
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false
-offset_top = 29.0
-offset_right = 1024.0
-offset_bottom = 29.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_top = 29.0
-offset_right = 1152.0
-offset_bottom = 29.0
+layout_mode = 2
 
 [node name="Control" type="Control" parent="HBoxContainer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 572.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
-offset_left = 576.0
-offset_right = 576.0
+layout_mode = 2
 columns = 3
 
 [node name="SpacerControl" type="Control" parent="HBoxContainer/GridContainer"]
-layout_mode = 3
-anchors_preset = 0
+layout_mode = 2
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 580.0
-offset_right = 1152.0
+layout_mode = 2
 size_flags_horizontal = 3

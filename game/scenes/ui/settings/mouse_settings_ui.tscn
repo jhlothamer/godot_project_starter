@@ -1,70 +1,55 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://c0bufsj8db1tm"]
 
-[ext_resource path="res://assets/themes/global.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/ui/settings/mouse_settings_ui.gd" type="Script" id=2]
+[ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/ui/settings/mouse_settings_ui.gd" id="2"]
 
 [node name="MouseSettingsUI" type="VBoxContainer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -427.0
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+theme = ExtResource("1")
+script = ExtResource("2")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 1024.0
-offset_bottom = 25.0
+layout_mode = 2
 text = "Mouse"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_top = 29.0
-offset_right = 1024.0
-offset_bottom = 140.0
+layout_mode = 2
 
 [node name="LeftSpacer" type="Control" parent="HBoxContainer"]
-offset_right = 196.0
-offset_bottom = 111.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
-offset_left = 200.0
-offset_right = 824.0
-offset_bottom = 111.0
-custom_constants/v_separation = 20
-custom_constants/h_separation = 20
+layout_mode = 2
+theme_override_constants/h_separation = 20
 columns = 2
 
 [node name="InvertMouseLabel" type="Label" parent="HBoxContainer/GridContainer"]
-offset_top = 20.0
-offset_right = 104.0
-offset_bottom = 45.0
+layout_mode = 2
 text = "Invert Y"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/GridContainer"]
-offset_left = 124.0
-offset_right = 624.0
-offset_bottom = 66.0
+layout_mode = 2
 
 [node name="InvertMouseChkBtn" type="CheckButton" parent="HBoxContainer/GridContainer/HBoxContainer"]
-offset_right = 76.0
-offset_bottom = 66.0
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="SensitivityLabel" type="Label" parent="HBoxContainer/GridContainer"]
-offset_top = 86.0
-offset_right = 104.0
-offset_bottom = 111.0
+layout_mode = 2
 text = "Sensitivity"
 
 [node name="SensitivtyHSlider" type="HSlider" parent="HBoxContainer/GridContainer"]
-offset_left = 124.0
-offset_top = 86.0
-offset_right = 624.0
-offset_bottom = 102.0
-minimum_size = Vector2( 500, 0 )
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+step = 0.1
 
 [node name="RightSpacer" type="Control" parent="HBoxContainer"]
-offset_left = 828.0
-offset_right = 1024.0
-offset_bottom = 111.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="toggled" from="HBoxContainer/GridContainer/HBoxContainer/InvertMouseChkBtn" to="." method="_on_InvertMouseChkBtn_toggled"]

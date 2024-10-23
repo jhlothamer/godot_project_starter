@@ -29,6 +29,6 @@ func _on_pressed():
 	if !_can_transition():
 		return
 	
-	emit_signal("about_to_transition")
+	about_to_transition.emit()
 	
 	TransitionMgr.transition_to(scene_to_load, transition_speed_seconds, fade_sound)

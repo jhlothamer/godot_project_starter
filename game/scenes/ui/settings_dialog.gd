@@ -31,13 +31,13 @@ func _on_SettingsUI_help_message_changed(message: String) -> void:
 func _on_CancelBtn_pressed():
 	_settings_ui.cancel()
 	hide()
-	emit_signal("dismissed")
+	dismissed.emit()
 
 func _on_OKBtn_pressed():
 	if !save():
 		return
 	hide()
-	emit_signal("dismissed")
+	dismissed.emit()
 
 
 

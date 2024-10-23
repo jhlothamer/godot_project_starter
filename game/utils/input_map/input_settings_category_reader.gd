@@ -1,19 +1,19 @@
 class_name InputSettingsCategoryReader
 extends RefCounted
 
-var _bindings_per_action: int
-var _bindings_types: Array
+var _binding_columns:Array[InputMapBindingColumnCfg]
 
-func _init(bindings_per_action: int,bindings_types: Array):
-	_bindings_per_action = bindings_per_action
-	_bindings_types = bindings_types
 
-func read(category_data: Dictionary, settings_data: Dictionary) -> InputSettingsCategory:
+func _init(binding_columns:Array[InputMapBindingColumnCfg]) -> void:
+	_binding_columns = binding_columns
+
+
+func read(category_data: InputMapCategoryCfg, settings_data: Dictionary) -> InputSettingsCategory:
 	var category := InputSettingsCategory.new()
 	
-	category.name = category_data["name"]
-	for a in category_data["actions"]:
-		var action = InputSettingsAction.new(a["action_name"], a["display_name"])
+	category.name = category_data.cateogry_name
+	for a in category_data.actions:
+		var action = InputSettingsAction.new(a.action_name, a.display_name)
 		if !InputMap.has_action(action.action_name):
 			printerr("InputSettingsCategoryReader: action names is not defined in the input map: '%s'" % action.action_name)
 			continue
@@ -29,16 +29,18 @@ func read(category_data: Dictionary, settings_data: Dictionary) -> InputSettings
 	return category
 
 
-func _order_event_list(events: Array) -> Array:
+func _order_event_list(events: Array[InputEvent]) -> Array:
 	var ordered_list := []
-	for allowed_events in _bindings_types:
+	for binding_column:InputMapBindingColumnCfg in _binding_columns:
+		pass
 		var matching_event: InputEvent = null
 		for event in events:
-			if allowed_events.has(event.get_class()):
+			if binding_column.is_valid_input_type(event.get_class()):
 				matching_event = event
 				break
 		if matching_event:
 			events.erase(matching_event)
 		ordered_list.append(matching_event)
+	
 	return ordered_list
 
