@@ -55,5 +55,3 @@ static func get_display_name(event: InputEvent) -> String:
 		printerr("Could not generate display name for type %s" % event.get_class())
 
 	return "??"
-
-

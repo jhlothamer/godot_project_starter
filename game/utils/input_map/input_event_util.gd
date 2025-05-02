@@ -7,6 +7,9 @@ static func duplicate_event(event: InputEvent) -> InputEvent:
 		var dup := InputEventKey.new()
 		dup.keycode = event.keycode
 		dup.physical_keycode = event.physical_keycode
+		dup.ctrl_pressed = event.ctrl_pressed
+		dup.alt_pressed = event.alt_pressed
+		dup.shift_pressed = event.shift_pressed
 		return dup
 	if event is InputEventJoypadButton:
 		var dup := InputEventJoypadButton.new()
@@ -44,6 +47,9 @@ static func deserialize_input_events(serialized_input_events: Array) -> Array:
 				var ek := InputEventKey.new()
 				ek.keycode = serialized_input_event["scancode"]
 				ek.physical_keycode = serialized_input_event["physical_scancode"]
+				ek.shift_pressed = serialized_input_event["shift_pressed"] if serialized_input_event.has("shift_pressed") else false
+				ek.ctrl_pressed = serialized_input_event["ctrl_pressed"] if serialized_input_event.has("ctrl_pressed") else false
+				ek.alt_pressed = serialized_input_event["alt_pressed"] if serialized_input_event.has("alt_pressed") else false
 				event = ek
 			"InputEventMouseButton":
 				var mb := InputEventMouseButton.new()
@@ -69,6 +75,9 @@ static func serialize_input_events(input_events: Array) -> Array:
 			event_data["type"] = "InputEventKey"
 			event_data["scancode"] = ek.keycode
 			event_data["physical_scancode"] = ek.physical_keycode
+			event_data["ctrl_pressed"] = ek.ctrl_pressed
+			event_data["alt_pressed"] = ek.alt_pressed
+			event_data["shift_pressed"] = ek.shift_pressed
 		elif i is InputEventMouseButton:
 			var mb: InputEventMouseButton = i
 			event_data["type"] = "InputEventMouseButton"
@@ -107,5 +116,3 @@ static func are_event_arrays_same(events1: Array, events2: Array) -> bool:
 		if !are_events_same(events1[i], events2[i]):
 			return false
 	return true
-
-

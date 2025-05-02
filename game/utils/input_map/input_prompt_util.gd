@@ -142,6 +142,3 @@ static func _get_input_event_image_file_path_pad(ejb: InputEventJoypadButton, sm
 	if ResourceLoader.exists(img_path):
 		return img_path
 	return ""
-
-
-

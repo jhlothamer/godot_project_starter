@@ -41,5 +41,3 @@ func reset() -> void:
 		remap_binding_button.text = ""
 	else:
 		remap_binding_button.text = InputEventDisplayNameUtil.get_display_name(event)
-
-
