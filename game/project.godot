@@ -25,6 +25,7 @@ EventBus="*res://utils/event_bus.gd"
 
 [debug]
 
+gdscript/warnings/unused_signal=0
 gdscript/warnings/unused_class_variable=true
 
 [file_customization]
