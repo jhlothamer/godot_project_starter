@@ -13,7 +13,7 @@ const BINDINGS_TYPE_TO_MESSAGE_NAME := {
 
 var _binding_column:InputMapBindingColumnCfg
 var _current_action: InputSettingsActionWrapper
-
+var _input_accepted := false
 
 func _ready():
 	size = min_size
@@ -38,18 +38,19 @@ func _init_label(binding_column_types:InputMapBindingColumnCfg.BindingColumnType
 
 
 func _input(event: InputEvent) -> void:
-	if !event.is_pressed():
+	if event is InputEventMouseMotion or event.is_pressed() or _input_accepted:
 		return
 	var event_class:String = event.get_class()
 	if !_binding_column.is_valid_input_type(event_class):
 		return
 	_label.text = InputEventDisplayNameUtil.get_display_name(event)
+	_input_accepted = true
 	await get_tree().create_timer(.5).timeout
+	_input_accepted = false
 	if !visible:
 		return
 	_current_action.set_event_binding(event)
 	hide()
-	return
 
 
 func _on_InputRemapDialog_popup_hide():
