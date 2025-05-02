@@ -104,12 +104,9 @@ The pause dialog is setup to automatically appear when the "pause" action is pre
 The pause dialog has 3 buttons: a resume, restart and main menu button. Resume hides the pause menu. Restart does nothing out of the box: you'll have to set the "Scene To Load" property to your games main scene or connect the button's pressed event to a new function. The main menu button takes the player to the title scene.
 
 ### Game Over Dialog
-The game over dialog automatically appears when the "game_over" action is "pressed". Of course, there's no button for this. You must send this action in code to initiate the game over dialog. Here's the code for that.
+The game over dialog appears when the game_over() signal from the EventBus autoload is emitted.  Just emit this signal from your code.
 
-> var a = InputEventAction.new()<br>
-> a.action = "game_over"<br>
-> a.pressed = true<br>
-> Input.parse_input_event(a)
+> EventBus.game_over.emit()
 
 ### Settings Dialog
 This dialog is launched from the pause dialog when the Settings button is clicked. If for some reason you do not want the settings dialog available in the game, you can remove the button from the pause dialog.
