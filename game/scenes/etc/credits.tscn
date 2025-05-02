@@ -41,6 +41,7 @@ text = "Credits"
 [node name="CreditsFileContentRichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"RichTextEdit"
 bbcode_enabled = true
 text = "Update res://assets/data/credits.txt"
 script = ExtResource("3_m4t56")
