@@ -66,7 +66,7 @@ func _event_to_key_string(event: InputEvent) -> String:
 	if event is InputEventKey:
 		var e: InputEventKey = event
 		var code = e.keycode if e.keycode > 0 else e.physical_keycode
-		return "key:%d" % [code]
+		return "key:%d:%s:%s:%s" % [code, e.shift_pressed, e.ctrl_pressed, e.alt_pressed]
 	if event is InputEventMouseButton:
 		var e: InputEventMouseButton = event
 		return "mouse:%d" % [e.button_index]
@@ -144,4 +144,3 @@ func get_invalid_input_settings_actions(all_actions: Array) -> Array:
 			invalid_actions.append(action_binding_index_dictionary)
 	
 	return invalid_actions
-

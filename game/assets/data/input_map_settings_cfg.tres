@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="InputMapSettingsCfg" load_steps=15 format=3 uid="uid://hlir4wyfg6fw"]
 
-[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/input_map_binding_column_cfg.gd" id="1_6drfs"]
-[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/input_map_action_cfg.gd" id="1_rs3pr"]
-[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/input_map_settings_cfg.gd" id="1_wxvwk"]
-[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/input_map_category_cfg.gd" id="2_q42r0"]
-[ext_resource type="Script" path="res://utils/input_map/input_map_cfg/Input_map_mouse_settings_cfg.gd" id="3_q8yt0"]
+[ext_resource type="Script" uid="uid://n2bd325smrs6" path="res://utils/input_map/input_map_cfg/input_map_binding_column_cfg.gd" id="1_6drfs"]
+[ext_resource type="Script" uid="uid://byadbjnbhoujv" path="res://utils/input_map/input_map_cfg/input_map_action_cfg.gd" id="1_rs3pr"]
+[ext_resource type="Script" uid="uid://ba3p20g71xbng" path="res://utils/input_map/input_map_cfg/input_map_settings_cfg.gd" id="1_wxvwk"]
+[ext_resource type="Script" uid="uid://cn7abjl5xf3e4" path="res://utils/input_map/input_map_cfg/input_map_category_cfg.gd" id="2_q42r0"]
+[ext_resource type="Script" uid="uid://ddg8u50xh6fpa" path="res://utils/input_map/input_map_cfg/input_map_mouse_settings_cfg.gd" id="3_q8yt0"]
 
 [sub_resource type="Resource" id="Resource_vrdtq"]
 script = ExtResource("1_6drfs")

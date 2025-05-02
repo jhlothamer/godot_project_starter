@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0bufsj8db1tm"]
 
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="1"]
-[ext_resource type="Script" path="res://scenes/ui/settings/mouse_settings_ui.gd" id="2"]
+[ext_resource type="Script" uid="uid://bwe4cmbjnvjkk" path="res://scenes/ui/settings/mouse_settings_ui.gd" id="2"]
 
 [node name="MouseSettingsUI" type="VBoxContainer"]
 anchors_preset = 15

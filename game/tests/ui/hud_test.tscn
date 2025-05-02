@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bumh2kdm1yhfj"]
 
 [ext_resource type="PackedScene" uid="uid://b7wir6v0viwtk" path="res://scenes/ui/hud.tscn" id="1"]
-[ext_resource type="Script" path="res://tests/ui/hud_test.gd" id="2"]
+[ext_resource type="Script" uid="uid://b6hnjpg73mfr5" path="res://tests/ui/hud_test.gd" id="2"]
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="4"]
 
 [node name="HudTest" type="Control"]
@@ -18,38 +18,40 @@ script = ExtResource("2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -182.5
-offset_right = 711.0
-offset_bottom = 182.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
+alignment = 1
 
 [node name="InstructionsLbl" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "To test the hud:
   Press escape key to bring up pause dialog
-  Press button below to bring up game over
-  NOTE:  once game over dialog is up you have to restart test scene"
+  Press button below to bring up game over"
 
-[node name="SimulateGameOverBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SimulateGameOverBtn" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 theme_type_variation = &"SmallButton"
 text = "Simulate Game Over"
 
 [node name="HowToGameOverLbl" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-text = "Game Over dialog triggered by the game_over input action.  You can 
-induce this input event in code as follows:
-     var a = InputEventAction.new()
-     a.action = \"game_over\"
-     a.pressed = true
-     Input.parse_input_event(a)"
+text = "Game Over dialog shows itself when the EventBus.game_over() signal is emitted.  So to trigger the dialog, simply emit that signal in a script.
+     EventBus.game_over.emit()"
+autowrap_mode = 2
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SimulateGameOverBtn" to="." method="_on_SimulateGameOverBtn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/SimulateGameOverBtn" to="." method="_on_SimulateGameOverBtn_pressed"]

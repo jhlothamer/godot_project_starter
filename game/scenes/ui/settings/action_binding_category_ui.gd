@@ -59,5 +59,3 @@ func reset_validity() -> void:
 func reset() -> void:
 	for wrapper in _input_settings_action_wrappers:
 		wrapper.reset()
-
-

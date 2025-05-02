@@ -12,4 +12,3 @@ extends Resource
 @export_range(1.0, 4.0, .1) var sensitivity_max := 2.5
 ## mouse sensativity default value
 @export_range(.1, 4.0, .1) var sensitivity_default := 1.5
-

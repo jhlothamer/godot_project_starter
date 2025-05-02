@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://uvx63ijep6l4"]
 
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="1"]
-[ext_resource type="Script" path="res://scenes/ui/settings/volume_settings_ui.gd" id="2"]
+[ext_resource type="Script" uid="uid://ba3uhebr4lfj0" path="res://scenes/ui/settings/volume_settings_ui.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://dwm85ottuyxpy" path="res://assets/sounds/volume_settings_ui/bong_001.ogg" id="3"]
 
 [node name="VolumeSettingsUI" type="VBoxContainer"]

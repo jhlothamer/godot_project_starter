@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cg33m0umsdbg0"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cg33m0umsdbg0"]
 
 [ext_resource type="FontFile" path="res://assets/fonts/text.tres" id="1"]
 [ext_resource type="FontFile" path="res://assets/fonts/buttons.tres" id="2"]
 [ext_resource type="FontFile" uid="uid://bxkgquuwteomg" path="res://assets/fonts/title.tres" id="3_alykh"]
+[ext_resource type="FontFile" uid="uid://0pb2pxp4hx33" path="res://assets/fonts/Jellee-Roman.otf" id="3_ymva5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xjrt"]
 draw_center = false
@@ -16,12 +17,19 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymva5"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
+
 [resource]
 Button/font_sizes/font_size = 48
 Button/fonts/font = ExtResource("2")
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_4xjrt")
+RichTextEdit/base_type = &"RichTextLabel"
+RichTextEdit/styles/normal = SubResource("StyleBoxFlat_ymva5")
+RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/fonts/normal_font = ExtResource("3_ymva5")
 SmallButton/base_type = &"Button"
 SmallButton/font_sizes/font_size = 20
 TabBar/font_sizes/font_size = 48

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://xqv1vvaogw4g"]
 
 [ext_resource type="Texture2D" uid="uid://bk6r7p1kd5oja" path="res://assets/images/white_square_64x64.png" id="2"]
-[ext_resource type="Script" path="res://scenes/etc/cover_images_generator.gd" id="3"]
+[ext_resource type="Script" uid="uid://decm5a8uuwnyn" path="res://scenes/etc/cover_images_generator.gd" id="3"]
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="5"]
 
 [node name="CoverImagesGenerator" type="Control"]
