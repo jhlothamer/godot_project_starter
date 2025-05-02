@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8gq0s6857rkh"]
 
 [ext_resource type="FontFile" path="res://assets/fonts/text.tres" id="1"]
-[ext_resource type="Script" path="res://scenes/ui/settings/input_remap_dialog.gd" id="2"]
+[ext_resource type="Script" uid="uid://cu5fxa4r05aer" path="res://scenes/ui/settings/input_remap_dialog.gd" id="2"]
 
 [sub_resource type="Theme" id="1"]
 default_font = ExtResource("1")

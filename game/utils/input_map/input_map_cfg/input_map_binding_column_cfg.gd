@@ -33,4 +33,3 @@ func get_valid_input_type_names() -> Array[String]:
 	if binding_types & BindingColumnTypes.GamePad: type_names.append("InputEventJoypadButton")
 	
 	return type_names
-

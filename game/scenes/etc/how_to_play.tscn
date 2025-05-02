@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b20uyj2a7snys" path="res://scenes/etc/scene_background.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bswc06g8au3yg" path="res://scenes/components/transition_button/transition_button.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/components/file_content_display/file_content_display.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bd1mypv1xxcuu" path="res://scenes/components/file_content_display/file_content_display.tscn" id="5"]
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="6"]
 
 [node name="HowToPlay" type="Control"]

@@ -13,3 +13,7 @@ func _input(event):
 		visible = true
 		get_tree().paused = true
 		_retry_btn.grab_focus()
+
+
+func _on_retry_btn_pressed() -> void:
+	TransitionMgr.transition_to(get_tree().current_scene.scene_file_path)

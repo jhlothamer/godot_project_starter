@@ -144,4 +144,3 @@ func get_invalid_input_settings_actions(all_actions: Array) -> Array:
 			invalid_actions.append(action_binding_index_dictionary)
 	
 	return invalid_actions
-

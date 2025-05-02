@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bumh2kdm1yhfj"]
 
 [ext_resource type="PackedScene" uid="uid://b7wir6v0viwtk" path="res://scenes/ui/hud.tscn" id="1"]
-[ext_resource type="Script" path="res://tests/ui/hud_test.gd" id="2"]
+[ext_resource type="Script" uid="uid://b6hnjpg73mfr5" path="res://tests/ui/hud_test.gd" id="2"]
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="4"]
 
 [node name="HudTest" type="Control"]

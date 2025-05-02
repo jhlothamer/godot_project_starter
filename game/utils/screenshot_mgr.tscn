@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://lojluohgqyph"]
 
-[ext_resource type="Script" path="res://utils/screenshot_mgr.gd" id="1"]
+[ext_resource type="Script" uid="uid://o28ulfckc4du" path="res://utils/screenshot_mgr.gd" id="1"]
 
 [node name="ScreenShotMgr" type="Node"]
 process_mode = 3

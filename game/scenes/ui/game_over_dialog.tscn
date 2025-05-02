@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bswc06g8au3yg" path="res://scenes/components/transition_button/transition_button.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dugd88fmowfix" path="res://scenes/ui/dialog_background.tscn" id="3"]
-[ext_resource type="Script" path="res://scenes/ui/game_over_dialog.gd" id="4"]
+[ext_resource type="Script" uid="uid://oj6mh0dm8wv" path="res://scenes/ui/game_over_dialog.gd" id="4"]
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="5"]
 
 [node name="GameOverDialog" type="Control"]
@@ -39,11 +39,14 @@ layout_mode = 2
 theme_type_variation = &"TitleLabel"
 text = "Game Over"
 
-[node name="RetryBtn" parent="VBoxContainer" instance=ExtResource("2")]
+[node name="RetryBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Retry"
+flat = true
 
 [node name="MainMenuBtn" parent="VBoxContainer" instance=ExtResource("2")]
 layout_mode = 2
 text = "Main Menu"
 scene_to_load = "res://scenes/etc/title.tscn"
+
+[connection signal="pressed" from="VBoxContainer/RetryBtn" to="." method="_on_retry_btn_pressed"]

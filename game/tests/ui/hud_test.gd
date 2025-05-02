@@ -6,4 +6,3 @@ func _on_SimulateGameOverBtn_pressed():
 	a.action = "game_over"
 	a.pressed = true
 	Input.parse_input_event(a)
-

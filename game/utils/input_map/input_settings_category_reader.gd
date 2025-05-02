@@ -43,4 +43,3 @@ func _order_event_list(events: Array[InputEvent]) -> Array:
 		ordered_list.append(matching_event)
 	
 	return ordered_list
-

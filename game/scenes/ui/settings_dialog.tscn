@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://dc4hempqd0638" path="res://scenes/ui/settings/settings_ui.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://dugd88fmowfix" path="res://scenes/ui/dialog_background.tscn" id="7"]
-[ext_resource type="Script" path="res://scenes/ui/settings_dialog.gd" id="8"]
+[ext_resource type="Script" uid="uid://cvydiap8im27s" path="res://scenes/ui/settings_dialog.gd" id="8"]
 
 [node name="SettingsDialog" type="Control"]
 layout_mode = 3
