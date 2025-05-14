@@ -1,6 +1,6 @@
 looking for a Godot 3 version?  Please see the master branch.
-# Godot 4.3 Project Starter
-This is a starter project for Godot Engine 4.3. To use simply clone or download this repository. Then copy the "game" folder to another location and rename it. You'll then be able to open the copied project in Godot and start updating.
+# Godot 4.4 Project Starter
+This is a starter project for Godot Engine 4.4. To use simply clone or download this repository. Then copy the "game" folder to another location and rename it. You'll then be able to open the copied project in Godot and start updating.
 
 ## Why use a Project Starter?
 There are a few things every game should have, even a quick project hacked out during a game jam. Such things are
